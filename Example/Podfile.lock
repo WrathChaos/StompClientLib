@@ -1,0 +1,16 @@
+PODS:
+  - StompClientLib (0.1.0)
+
+DEPENDENCIES:
+  - StompClientLib (from `../`)
+
+EXTERNAL SOURCES:
+  StompClientLib:
+    :path: ../
+
+SPEC CHECKSUMS:
+  StompClientLib: 6129d4e90f412c5947d5fa6c9d473dbb0e1a0522
+
+PODFILE CHECKSUM: 6140d46ffc935a567193fd63e76acb30a9b8f6b0
+
+COCOAPODS: 1.2.1
