@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'StompClientLib_Example' do
+  pod 'StompClientLib', :path => '../'
+
+  target 'StompClientLib_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
