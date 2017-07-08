@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'StompClientLib'
-  s.version          = '0.1.1'
+  s.version          = '0.1.0'
   s.summary          = 'StompClientLib let the websocket use the Stomp protocol'
 
 # This description is used to generate tags and improve search results.
