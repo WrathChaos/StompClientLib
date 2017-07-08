@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-StompClientLib let the websocket use the Stomp protocol. STOMP Protocol let the program subscribe or unsubscribe the topic.
+Simple STOMP Client library, Swift 3 compatible. STOMP Protocol let the program subscribe or unsubscribe the topic. It connects the websocket and use the STOMP protocol to subscribe the topic and recieve the message, receipt or even a ping.
                        DESC
 
   s.homepage         = 'https://github.com/wrathchaos/StompClientLib'
