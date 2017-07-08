@@ -26,9 +26,9 @@ StompClientLib let the websocket use the Stomp protocol. STOMP Protocol let the 
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'FreakyCoder' => 'kurayogun@gmail.com' }
   s.source           = { :git => 'https://github.com/wrathchaos/StompClientLib.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/freakycodercom'
+  s.social_media_url = 'https://twitter.com/freakycodercom'
 
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '10.0'
 
   s.source_files = 'StompClientLib/Classes/**/*'
   

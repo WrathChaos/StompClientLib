@@ -61,7 +61,6 @@ public protocol StompClientLibDelegate {
     func stompClient(client: StompClientLib!, didReceiveMessageWithJSONBody jsonBody: AnyObject?, withHeader header:[String:String]?, withDestination destination: String)
     
     func stompClientDidDisconnect(client: StompClientLib!)
-    func stompClientWillDisconnect(client: StompClientLib!, withError error: NSError)
     func stompClientDidConnect(client: StompClientLib!)
     func serverDidSendReceipt(client: StompClientLib!, withReceiptId receiptId: String)
     func serverDidSendError(client: StompClientLib!, withErrorMessage description: String, detailedErrorMessage message: String?)
@@ -267,7 +266,6 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
     }
     
     private func receiveFrame(command: String, headers: [String: String], body: String?) {
-        print("COMMAND : \(command)")
         if command == StompCommands.responseFrameConnected {
             // Connected
             if let sessId = headers[StompCommands.responseHeaderSession] {
@@ -281,14 +279,12 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
             }
         } else if command == StompCommands.responseFrameMessage {   // Message comes to this part
             // Response
-            print("RESPONSE FROM MESSAGE ")
             if let delegate = delegate {
                 DispatchQueue.main.async(execute: {
-                    print("MESSAGE : \(String(describing: body))")
                     delegate.stompClient(client: self, didReceiveMessageWithJSONBody: self.dictForJSONString(jsonStr: body), withHeader: headers, withDestination: self.destinationFromHeader(header: headers))
                 })
             }
-        } else if command == StompCommands.responseFrameReceipt {
+        } else if command == StompCommands.responseFrameReceipt {   //
             // Receipt
             if let delegate = delegate {
                 if let receiptId = headers[StompCommands.responseHeaderReceiptId] {
@@ -363,13 +359,13 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
         self.sendFrame(command: StompCommands.commandSubscribe, header: headers, body: nil)
     }
     
-    public func subscribeToDestination(destination: String, withHeader header: [String: String]) {
+    public func subscribe(destination: String, withHeader header: [String: String]) {
         var headerToSend = header
         headerToSend[StompCommands.commandHeaderDestination] = destination
         sendFrame(command: StompCommands.commandSubscribe, header: headerToSend, body: nil)
     }
     
-    public func unsubscribeFromDestination(destination: String) {
+    public func unsubscribe(destination: String) {
         var headerToSend = [String: String]()
         headerToSend[StompCommands.commandHeaderDestinationId] = destination
         sendFrame(command: StompCommands.commandUnsubscribe, header: headerToSend, body: nil)
