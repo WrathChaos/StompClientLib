@@ -5,11 +5,18 @@
 [![License](https://img.shields.io/cocoapods/l/StompClientLib.svg?style=flat)](http://cocoapods.org/pods/StompClientLib)
 [![Platform](https://img.shields.io/cocoapods/p/StompClientLib.svg?style=flat)](http://cocoapods.org/pods/StompClientLib)
 
+## Introduction
+
+StompClientLib is a stomp client in Swift. It uses Facebook's [ SocketRocket ](https://github.com/facebook/SocketRocket) as a websocket dependency. SocketRocket is written in Objective-C but StompClientLib's STOMP part is written in Swift and its usage is Swift. You can use this library in your Swift 3 projects.
+
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
 ## Requirements
+- iOS 8.0+
+- Xcode 8.1, 8.2, 8.3
+- Swift 3.0, 3.1, 3.2
 
 ## Installation
 
@@ -35,69 +42,68 @@ socketClient.openSocketWithURLRequest(request: NSURLRequest(url: url as URL) , d
 
 After you are connected, there are some delegate methods that you need to implement.
 
-## StompClientLibDelegate
+# StompClientLibDelegate
 
-# stompClientDidConnect
+## stompClientDidConnect
 ```ruby
 func stompClientDidConnect(client: StompClientLib!) {
-    print("Socket is connected")
-    // Stomp subscribe will be here!
-    socketClient.subscribe(destination: topic)
-    // Note : topic needs to be a String object
+print("Socket is connected")
+// Stomp subscribe will be here!
+socketClient.subscribe(destination: topic)
+// Note : topic needs to be a String object
 }
 ```
 
-# stompClientDidDisconnect
+## stompClientDidDisconnect
 ```ruby
 func stompClientDidDisconnect(client: StompClientLib!) {
-    print("Socket is Disconnected")
+print("Socket is Disconnected")
 }
 ```
 
-
-# stompClientWillDisconnect
+## stompClientWillDisconnect
 ```ruby
 func stompClientWillDisconnect(client: StompClientLib!, withError error: NSError) {
 
 }
 ```
 
-# didReceiveMessageWithJSONBody  ( Message Received via STOMP )
+## didReceiveMessageWithJSONBody  ( Message Received via STOMP )
 
 Your json message will be converted to JSON Body as AnyObject and you will receive your message in this function
 ```ruby
 func stompClient(client: StompClientLib!, didReceiveMessageWithJSONBody jsonBody: AnyObject?, withHeader header: [String : String]?, withDestination destination: String) {
-    print("Destination : \(destination)")
-    print("JSON Body : \(String(describing: jsonBody))")
+print("Destination : \(destination)")
+print("JSON Body : \(String(describing: jsonBody))")
 }
 ```
 
-# serverDidSendReceipt 
+## serverDidSendReceipt 
 
 If you will use STOMP for in-app purchase, you might need to use this function to get receipt 
 ```ruby
 func serverDidSendReceipt(client: StompClientLib!, withReceiptId receiptId: String) {
-    print("Receipt : \(receiptId)")
+print("Receipt : \(receiptId)")
 }
 ```
 
-#serverDidSendError
+## serverDidSendError
 
 Your error message will be received in this function
 
 ```ruby
 func serverDidSendError(client: StompClientLib!, withErrorMessage description: String, detailedErrorMessage message: String?) {
-    print("Error Send : \(String(describing: message))")
+print("Error Send : \(String(describing: message))")
 }
 ```
 
-# serverDidSendPing
+## serverDidSendPing
 
 If you need to control your server's ping, here is your part 
 
 ```ruby
 func serverDidSendPing() {
-    print("Server ping")
+print("Server ping")
 }
 ```
 
@@ -108,18 +114,28 @@ There are functions for subscribing and unsubscribing.
 Note : You should handle your subscribe and unsubscibe methods ! 
 Suggestion : Subscribe to your topic in "stompClientDidConnect" function and unsubcribe to your topic in stompClientWillDisconnect method. 
 
-# Subscribe
+## Subscribe
 ```ruby
 socketClient.subscribe(destination: topic)
 // Note : topic needs to be a String object
 ```
-# Unsubscribe
+## Unsubscribe
 
 ```ruby
 socketClient.unsubscribe(destination: topic)
 ```
 
 Important : You have to send your destination for both subscribe or unsubscribe!
+
+## Future Enhancements
+
+- [ ] Complete a working Example
+- [ ] Add Carthage installation option
+- [ ] Add Swift Package Manager installation option
+- [ ] XCode 9 compatibility
+- [ ] Swift 4 compatibility and tests
+- [ ] [ Add Quick Testing ](https://github.com/Quick/Quick)
+- [ ] Re-write websocket full swift version instead of Facebook's SocketRocket lib
 
 ## Author
 
