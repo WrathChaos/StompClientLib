@@ -35,9 +35,9 @@ socketClient.openSocketWithURLRequest(request: NSURLRequest(url: url as URL) , d
 
 After you are connected, there are some delegate methods that you need to implement.
 
-## StompClientLibDelegate
+# StompClientLibDelegate
 
-# stompClientDidConnect
+## stompClientDidConnect
 ```ruby
 func stompClientDidConnect(client: StompClientLib!) {
     print("Socket is connected")
@@ -47,22 +47,21 @@ func stompClientDidConnect(client: StompClientLib!) {
 }
 ```
 
-# stompClientDidDisconnect
+## stompClientDidDisconnect
 ```ruby
 func stompClientDidDisconnect(client: StompClientLib!) {
     print("Socket is Disconnected")
 }
 ```
 
-
-# stompClientWillDisconnect
+## stompClientWillDisconnect
 ```ruby
 func stompClientWillDisconnect(client: StompClientLib!, withError error: NSError) {
 
 }
 ```
 
-# didReceiveMessageWithJSONBody  ( Message Received via STOMP )
+## didReceiveMessageWithJSONBody  ( Message Received via STOMP )
 
 Your json message will be converted to JSON Body as AnyObject and you will receive your message in this function
 ```ruby
@@ -72,7 +71,7 @@ func stompClient(client: StompClientLib!, didReceiveMessageWithJSONBody jsonBody
 }
 ```
 
-# serverDidSendReceipt 
+## serverDidSendReceipt 
 
 If you will use STOMP for in-app purchase, you might need to use this function to get receipt 
 ```ruby
@@ -81,7 +80,7 @@ func serverDidSendReceipt(client: StompClientLib!, withReceiptId receiptId: Stri
 }
 ```
 
-#serverDidSendError
+## serverDidSendError
 
 Your error message will be received in this function
 
@@ -91,7 +90,7 @@ func serverDidSendError(client: StompClientLib!, withErrorMessage description: S
 }
 ```
 
-# serverDidSendPing
+## serverDidSendPing
 
 If you need to control your server's ping, here is your part 
 
@@ -108,12 +107,12 @@ There are functions for subscribing and unsubscribing.
 Note : You should handle your subscribe and unsubscibe methods ! 
 Suggestion : Subscribe to your topic in "stompClientDidConnect" function and unsubcribe to your topic in stompClientWillDisconnect method. 
 
-# Subscribe
+## Subscribe
 ```ruby
 socketClient.subscribe(destination: topic)
 // Note : topic needs to be a String object
 ```
-# Unsubscribe
+## Unsubscribe
 
 ```ruby
 socketClient.unsubscribe(destination: topic)
