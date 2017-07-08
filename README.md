@@ -5,11 +5,18 @@
 [![License](https://img.shields.io/cocoapods/l/StompClientLib.svg?style=flat)](http://cocoapods.org/pods/StompClientLib)
 [![Platform](https://img.shields.io/cocoapods/p/StompClientLib.svg?style=flat)](http://cocoapods.org/pods/StompClientLib)
 
+## Introduction
+
+StompClientLib is a stomp client in Swift. It uses Facebook's [ SocketRocket ](https://github.com/facebook/SocketRocket) as a websocket dependency. SocketRocket is written in Objective-C but StompClientLib's STOMP part is written in Swift and its usage is Swift. You can use this library in your Swift 3 projects.
+
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
 ## Requirements
+- iOS 8.0+
+- Xcode 8.1, 8.2, 8.3
+- Swift 3.0, 3.1, 3.2
 
 ## Installation
 
@@ -119,6 +126,16 @@ socketClient.unsubscribe(destination: topic)
 ```
 
 Important : You have to send your destination for both subscribe or unsubscribe!
+
+## Future Enhancements
+
+- [ ] Complete a working Example
+- [ ] Add Carthage installation option
+- [ ] Add Swift Package Manager installation option
+- [ ] XCode 9 compatibility
+- [ ] Swift 4 compatibility and tests
+- [ ] [ Add Quick Testing ](https://github.com/Quick/Quick)
+- [ ] Re-write websocket full swift version instead of Facebook's SocketRocket lib
 
 ## Author
 
