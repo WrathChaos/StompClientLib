@@ -1,15 +1,15 @@
 {
   "name": "StompClientLib",
   "version": "0.1.0",
-  "summary": "A short description of StompClientLib.",
-  "description": "TODO: Add long description of the pod here.",
+  "summary": "StompClientLib let the websocket use the Stomp protocol",
+  "description": "StompClientLib let the websocket use the Stomp protocol. STOMP Protocol let the program subscribe or unsubscribe the topic.",
   "homepage": "https://github.com/wrathchaos/StompClientLib",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
   },
   "authors": {
-    "wrathchaos": "wrathchaos@hotmail.com"
+    "FreakyCoder": "kurayogun@gmail.com"
   },
   "source": {
     "git": "https://github.com/wrathchaos/StompClientLib.git",
@@ -18,5 +18,10 @@
   "platforms": {
     "ios": "8.0"
   },
-  "source_files": "StompClientLib/Classes/**/*"
+  "source_files": "StompClientLib/Classes/**/*",
+  "dependencies": {
+    "SocketRocket": [
+
+    ]
+  }
 }

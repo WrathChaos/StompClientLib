@@ -1,7 +1,10 @@
 PODS:
-  - StompClientLib (0.1.0)
+  - SocketRocket (0.5.1)
+  - StompClientLib (0.1.0):
+    - SocketRocket
 
 DEPENDENCIES:
+  - SocketRocket
   - StompClientLib (from `../`)
 
 EXTERNAL SOURCES:
@@ -9,8 +12,9 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  StompClientLib: 6129d4e90f412c5947d5fa6c9d473dbb0e1a0522
+  SocketRocket: d57c7159b83c3c6655745cd15302aa24b6bae531
+  StompClientLib: f81f5da014a85af0bfde17f1b59bb5f6d0a2bbcc
 
-PODFILE CHECKSUM: 6140d46ffc935a567193fd63e76acb30a9b8f6b0
+PODFILE CHECKSUM: cf2d814b7f53a6a965a84cf4f08bcbfda90ae85d
 
 COCOAPODS: 1.2.1

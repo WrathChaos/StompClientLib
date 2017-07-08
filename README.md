@@ -22,7 +22,7 @@ pod "StompClientLib"
 
 ## Author
 
-wrathchaos, wrathchaos@hotmail.com
+FreakyCoder, kurayogun@gmail.com
 
 ## License
 

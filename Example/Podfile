@@ -6,6 +6,7 @@ target 'StompClientLib_Example' do
   target 'StompClientLib_Tests' do
     inherit! :search_paths
 
+    pod 'SocketRocket'
     
   end
 end

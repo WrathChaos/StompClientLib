@@ -14,7 +14,7 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
-		C65F601183B4516DB58EA4FB /* Pods_StompClientLib_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D3686CC7F4888ECF9C8C987 /* Pods_StompClientLib_Example.framework */; };
+		88D2549E3213E60E834B6895 /* Pods_StompClientLib_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D3686CC7F4888ECF9C8C987 /* Pods_StompClientLib_Example.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,11 +28,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		17511BDB80AACD58C89ABB0C /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		1BC917E1B315D79031CDC2DB /* StompClientLib.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = StompClientLib.podspec; path = ../StompClientLib.podspec; sourceTree = "<group>"; };
+		17511BDB80AACD58C89ABB0C /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		1BC917E1B315D79031CDC2DB /* StompClientLib.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = StompClientLib.podspec; path = ../StompClientLib.podspec; sourceTree = "<group>"; };
 		27454EB1776A5ED6CA9B7128 /* Pods-StompClientLib_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StompClientLib_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-StompClientLib_Example/Pods-StompClientLib_Example.release.xcconfig"; sourceTree = "<group>"; };
 		4064E4062B7FB9DEAEA709A8 /* Pods-StompClientLib_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StompClientLib_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StompClientLib_Tests/Pods-StompClientLib_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		41A3409A414E4B711109EE5B /* Pods-StompClientLib_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StompClientLib_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StompClientLib_Example/Pods-StompClientLib_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		4479918D1F10E43100E88D98 /* SocketRocket.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SocketRocket.framework; path = "../../../Library/Developer/Xcode/DerivedData/StompClientLib-eitoinuarubmzvfeqrotoekszmqp/Build/Products/Debug-iphoneos/SocketRocket/SocketRocket.framework"; sourceTree = "<group>"; };
+		4479918F1F10E43600E88D98 /* StompClientLib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StompClientLib.framework; path = "../../../Library/Developer/Xcode/DerivedData/StompClientLib-eitoinuarubmzvfeqrotoekszmqp/Build/Products/Debug-iphoneos/StompClientLib/StompClientLib.framework"; sourceTree = "<group>"; };
 		5D3686CC7F4888ECF9C8C987 /* Pods_StompClientLib_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StompClientLib_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD01AFB9204008FA782 /* StompClientLib_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StompClientLib_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -46,7 +48,7 @@
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		836A1D99FAAA7EAAA4E7AB40 /* Pods_StompClientLib_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StompClientLib_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		84A05036C3F47FC6F886D001 /* Pods-StompClientLib_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StompClientLib_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-StompClientLib_Tests/Pods-StompClientLib_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		EFDE014C0409584D20FFFAE7 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		EFDE014C0409584D20FFFAE7 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,7 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C65F601183B4516DB58EA4FB /* Pods_StompClientLib_Example.framework in Frameworks */,
+				88D2549E3213E60E834B6895 /* Pods_StompClientLib_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,6 +74,8 @@
 		06CB5C7FD3A9713BB9EFD310 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4479918F1F10E43600E88D98 /* StompClientLib.framework */,
+				4479918D1F10E43100E88D98 /* SocketRocket.framework */,
 				5D3686CC7F4888ECF9C8C987 /* Pods_StompClientLib_Example.framework */,
 				836A1D99FAAA7EAAA4E7AB40 /* Pods_StompClientLib_Tests.framework */,
 			);
@@ -215,10 +219,13 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = DDFAG9WR5M;
 						LastSwiftMigration = 0820;
+						ProvisioningStyle = Automatic;
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = DDFAG9WR5M;
 						LastSwiftMigration = 0820;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
@@ -443,7 +450,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -483,7 +490,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -496,11 +503,20 @@
 			baseConfigurationReference = 41A3409A414E4B711109EE5B /* Pods-StompClientLib_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = DDFAG9WR5M;
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$PODS_CONFIGURATION_BUILD_DIR/SocketRocket\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/StompClientLib\"",
+					"$(inherited)",
+				);
 				INFOPLIST_FILE = StompClientLib/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -510,11 +526,20 @@
 			baseConfigurationReference = 27454EB1776A5ED6CA9B7128 /* Pods-StompClientLib_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = DDFAG9WR5M;
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$PODS_CONFIGURATION_BUILD_DIR/SocketRocket\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/StompClientLib\"",
+					"$(inherited)",
+				);
 				INFOPLIST_FILE = StompClientLib/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -523,6 +548,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4064E4062B7FB9DEAEA709A8 /* Pods-StompClientLib_Tests.debug.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = DDFAG9WR5M;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -543,6 +569,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 84A05036C3F47FC6F886D001 /* Pods-StompClientLib_Tests.release.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = DDFAG9WR5M;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
