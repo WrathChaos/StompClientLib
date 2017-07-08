@@ -339,11 +339,11 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
         sendFrame(command: StompCommands.commandSend, header: headersToSend, body: message as AnyObject)
     }
     
-    public func subscribeToDestination(destination: String) {
-        subscribeToDestinationn(destination: destination, ackMode: .AutoMode)
+    public func subscribe(destination: String) {
+        subscribeToDestination(destination: destination, ackMode: .AutoMode)
     }
     
-    public func subscribeToDestinationn(destination: String, ackMode: StompAckMode) {
+    public func subscribeToDestination(destination: String, ackMode: StompAckMode) {
         var ack = ""
         switch ackMode {
         case StompAckMode.ClientMode:
@@ -359,7 +359,7 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
         self.sendFrame(command: StompCommands.commandSubscribe, header: headers, body: nil)
     }
     
-    public func subscribe(destination: String, withHeader header: [String: String]) {
+    public func subscribeWithHeader(destination: String, withHeader header: [String: String]) {
         var headerToSend = header
         headerToSend[StompCommands.commandHeaderDestination] = destination
         sendFrame(command: StompCommands.commandSubscribe, header: headerToSend, body: nil)
