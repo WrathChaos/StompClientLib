@@ -10,4 +10,4 @@
 *.gitattributes text
 .gitignore text
 *.md text
-*.rb linguist-language=Java
+*.rb linguist-language=Swift
