@@ -9,6 +9,8 @@
 
 StompClientLib is a stomp client in Swift. It uses Facebook's [ SocketRocket ](https://github.com/facebook/SocketRocket) as a websocket dependency. SocketRocket is written in Objective-C but StompClientLib's STOMP part is written in Swift and its usage is Swift. You can use this library in your Swift 3 projects.
 
+This is original a fork from [AKStompClient](https://github.com/alibasta/AKStompClient) (This library is not working right now)
+
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
@@ -47,17 +49,17 @@ After you are connected, there are some delegate methods that you need to implem
 ## stompClientDidConnect
 ```ruby
 func stompClientDidConnect(client: StompClientLib!) {
-    print("Socket is connected")
-    // Stomp subscribe will be here!
-    socketClient.subscribe(destination: topic)
-    // Note : topic needs to be a String object
+print("Socket is connected")
+// Stomp subscribe will be here!
+socketClient.subscribe(destination: topic)
+// Note : topic needs to be a String object
 }
 ```
 
 ## stompClientDidDisconnect
 ```ruby
 func stompClientDidDisconnect(client: StompClientLib!) {
-    print("Socket is Disconnected")
+print("Socket is Disconnected")
 }
 ```
 
@@ -73,8 +75,8 @@ func stompClientWillDisconnect(client: StompClientLib!, withError error: NSError
 Your json message will be converted to JSON Body as AnyObject and you will receive your message in this function
 ```ruby
 func stompClient(client: StompClientLib!, didReceiveMessageWithJSONBody jsonBody: AnyObject?, withHeader header: [String : String]?, withDestination destination: String) {
-    print("Destination : \(destination)")
-    print("JSON Body : \(String(describing: jsonBody))")
+print("Destination : \(destination)")
+print("JSON Body : \(String(describing: jsonBody))")
 }
 ```
 
@@ -83,7 +85,7 @@ func stompClient(client: StompClientLib!, didReceiveMessageWithJSONBody jsonBody
 If you will use STOMP for in-app purchase, you might need to use this function to get receipt 
 ```ruby
 func serverDidSendReceipt(client: StompClientLib!, withReceiptId receiptId: String) {
-    print("Receipt : \(receiptId)")
+print("Receipt : \(receiptId)")
 }
 ```
 
@@ -93,7 +95,7 @@ Your error message will be received in this function
 
 ```ruby
 func serverDidSendError(client: StompClientLib!, withErrorMessage description: String, detailedErrorMessage message: String?) {
-    print("Error Send : \(String(describing: message))")
+print("Error Send : \(String(describing: message))")
 }
 ```
 
@@ -103,7 +105,7 @@ If you need to control your server's ping, here is your part
 
 ```ruby
 func serverDidSendPing() {
-    print("Server ping")
+print("Server ping")
 }
 ```
 
