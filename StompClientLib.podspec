@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'StompClientLib'
-  s.version          = '0.1.3'
+  s.version          = '0.1.4'
   s.summary          = 'Simple STOMP Client library, Swift 3 compatible'
 
 # This description is used to generate tags and improve search results.
@@ -28,7 +28,7 @@ Simple STOMP Client library, Swift 3 compatible. STOMP Protocol let the program 
   s.source           = { :git => 'https://github.com/wrathchaos/StompClientLib.git', :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/freakycodercom'
 
-  s.ios.deployment_target = '10.0'
+  s.ios.deployment_target = '8.0'
 
   s.source_files = 'StompClientLib/Classes/**/*'
   
