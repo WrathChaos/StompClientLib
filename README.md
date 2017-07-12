@@ -132,7 +132,7 @@ Important : You have to send your destination for both subscribe or unsubscribe!
 
 ## Future Enhancements
 
-- [ ] Complete a working Example
+- [x] Complete a working Example
 - [ ] Add Carthage installation option
 - [ ] Add Swift Package Manager installation option
 - [ ] XCode 9 compatibility
