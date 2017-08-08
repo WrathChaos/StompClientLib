@@ -1,10 +1,29 @@
 # StompClientLib
+<p align="center">
+<img width="200" height="200" src="https://github.com/WrathChaos/StompClientLib/blob/master/Screenshots/socket.png">
+</p>
 
-[![CI Status](http://img.shields.io/travis/wrathchaos/StompClientLib.svg?style=flat)](https://travis-ci.org/wrathchaos/StompClientLib)
-![](https://img.shields.io/badge/Swift-3.0-blue.svg?style=flat)
-[![Version](https://img.shields.io/cocoapods/v/StompClientLib.svg?style=flat)](http://cocoapods.org/pods/StompClientLib)
-[![License](https://img.shields.io/cocoapods/l/StompClientLib.svg?style=flat)](http://cocoapods.org/pods/StompClientLib)
-[![Platform](https://img.shields.io/cocoapods/p/StompClientLib.svg?style=flat)](http://cocoapods.org/pods/StompClientLib)
+
+<p align="center">
+<a href="https://github.com/WrathChaos/StompClientLib">
+<img src="https://img.shields.io/cocoapods/l/StompClientLib.svg"
+alt="License">
+</a>
+<a href="https://github.com/WrathChaos/StompClientLib">
+<img src="https://img.shields.io/cocoapods/p/StompClientLib.svg"
+alt="platform">
+</a>
+<a href="https://github.com/WrathChaos/StompClientLib">
+<img src="https://img.shields.io/badge/CocoaPods-compatible-4BC51D.svg"
+alt="Cocoapods">
+</a>
+<a href="https://github.com/WrathChaos/StompClientLib">
+<img src="https://img.shields.io/cocoapods/dt/StompClientLib.svg"
+alt="Downloads">
+</a>
+</p>
+
+
 
 ## Introduction
 
