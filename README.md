@@ -25,6 +25,27 @@ alt="Downloads">
 
 
 
+<p align="center">
+<a href="https://github.com/WrathChaos/StompClientLib">
+<img src="http://img.shields.io/travis/wrathchaos/StompClientLib.svg"
+alt="Build">
+</a>
+<a href="https://github.com/WrathChaos/StompClientLib">
+<img src="https://img.shields.io/github/issues/WrathChaos/StompClientLib.svg"
+alt="Issues">
+</a>
+<a href="https://github.com/WrathChaos/StompClientLib">
+<img src="https://img.shields.io/badge/Swift-3.0-blue.svg"
+alt="Swift 3.0">
+</a>
+<a href="https://github.com/WrathChaos/StompClientLib">
+<img src="https://img.shields.io/cocoapods/v/StompClientLib.svg"
+alt="Pod Version">
+</a>
+</p>
+
+
+
 ## Introduction
 
 StompClientLib is a stomp client in Swift. It uses Facebook's [ SocketRocket ](https://github.com/facebook/SocketRocket) as a websocket dependency. SocketRocket is written in Objective-C but StompClientLib's STOMP part is written in Swift and its usage is Swift. You can use this library in your Swift 3 projects.
