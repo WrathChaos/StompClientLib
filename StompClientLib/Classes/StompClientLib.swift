@@ -58,17 +58,17 @@ public enum StompAckMode {
 
 // Fundamental Protocols
 public protocol StompClientLibDelegate {
-    func stompClient(client: StompClientLib!, didReceiveMessageWithJSONBody jsonBody: AnyObject?, withHeader header:[String:String]?, withDestination destination: String)
-    
     func stompClientDidDisconnect(client: StompClientLib!)
     func stompClientDidConnect(client: StompClientLib!)
     func serverDidSendReceipt(client: StompClientLib!, withReceiptId receiptId: String)
     func serverDidSendError(client: StompClientLib!, withErrorMessage description: String, detailedErrorMessage message: String?)
     func serverDidSendPing()
-}
-extension StompClientLibDelegate {
-    func stopClientMessage(client: StompClientLib, didReceiveMessage message: String?, withHeader header: [String: String]?, withDestination destination: String) {
-    }
+
+    func stopClientMessage(client: StompClientLib, didReceiveMessage message: String?, withHeader header: [String: String]?, withDestination destination: String)
+    /**
+     Receive normal unformatted data from the websocket
+     */
+    func stompClient(client: StompClientLib!, didReceiveMessageWithJSONBody jsonBody: AnyObject?, withHeader header:[String:String]?, withDestination destination: String)
 }
 
 public class StompClientLib: NSObject, SRWebSocketDelegate {

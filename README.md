@@ -5,38 +5,21 @@
 
 
 <p align="center">
-<a href="https://github.com/WrathChaos/StompClientLib">
+<a href="#">
 <img src="https://img.shields.io/cocoapods/l/StompClientLib.svg"
 alt="License">
 </a>
-<a href="https://github.com/WrathChaos/StompClientLib">
-<img src="https://img.shields.io/cocoapods/p/StompClientLib.svg"
+<a href="#">
+<img src="https://img.shields.io/badge/Platform-iOS-pink.svg"
 alt="platform">
 </a>
-<a href="https://github.com/WrathChaos/StompClientLib">
-<img src="https://img.shields.io/badge/CocoaPods-compatible-4BC51D.svg"
+<a href="#">
+<img src="https://img.shields.io/badge/Pods-1.1.9-blue.svg"
 alt="Cocoapods">
 </a>
 <a href="https://github.com/WrathChaos/StompClientLib">
-<img src="https://img.shields.io/cocoapods/dt/StompClientLib.svg"
-alt="Downloads">
-</a>
-</p>
-
-
-
-<p align="center">
-<a href="https://github.com/WrathChaos/StompClientLib">
-<img src="http://img.shields.io/travis/wrathchaos/StompClientLib.svg"
-alt="Build">
-</a>
-<a href="https://github.com/WrathChaos/StompClientLib">
-<img src="https://img.shields.io/github/issues/WrathChaos/StompClientLib.svg"
-alt="Issues">
-</a>
-<a href="https://github.com/WrathChaos/StompClientLib">
-<img src="https://img.shields.io/badge/Swift-3.0-blue.svg"
-alt="Swift 3.0">
+<img src="https://img.shields.io/badge/Swift-4.0-blue.svg"
+alt="Swift 4.0">
 </a>
 <a href="https://github.com/WrathChaos/StompClientLib">
 <img src="https://img.shields.io/cocoapods/v/StompClientLib.svg"
@@ -58,8 +41,8 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Requirements
 - iOS 8.0+
-- Xcode 8.1, 8.2, 8.3
-- Swift 3.0, 3.1, 3.2
+- Xcode 9.0
+- Swift 4
 
 ## Installation
 
@@ -173,10 +156,7 @@ Important : You have to send your destination for both subscribe or unsubscribe!
 ## Future Enhancements
 
 - [x] Complete a working Example
-- [ ] Add Carthage installation option
-- [ ] Add Swift Package Manager installation option
-- [ ] XCode 9 compatibility
-- [ ] Swift 4 compatibility and tests
+- [x] Add Carthage installation option
 - [ ] [ Add Quick Testing ](https://github.com/Quick/Quick)
 - [ ] Re-write websocket full swift version instead of Facebook's SocketRocket lib
 
