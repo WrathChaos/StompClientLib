@@ -14,7 +14,7 @@ alt="License">
 alt="platform">
 </a>
 <a href="#">
-<img src="https://img.shields.io/badge/Pods-1.1.9-blue.svg"
+<img src="https://img.shields.io/badge/Pods-1.1.10-blue.svg"
 alt="Cocoapods">
 </a>
 <a href="https://github.com/WrathChaos/StompClientLib">
