@@ -66,6 +66,10 @@ public protocol StompClientLibDelegate {
     func serverDidSendError(client: StompClientLib!, withErrorMessage description: String, detailedErrorMessage message: String?)
     func serverDidSendPing()
 }
+extension StompClientLibDelegate {
+    func stopClientMessage(client: StompClientLib, didReceiveMessage message: String?, withHeader header: [String: String]?, withDestination destination: String) {
+    }
+}
 
 public class StompClientLib: NSObject, SRWebSocketDelegate {
     var socket: SRWebSocket?
@@ -283,6 +287,7 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
             if let delegate = delegate {
                 DispatchQueue.main.async(execute: {
                     delegate.stompClient(client: self, didReceiveMessageWithJSONBody: self.dictForJSONString(jsonStr: body), withHeader: headers, withDestination: self.destinationFromHeader(header: headers))
+                    delegate.stopClientMessage(client: self, didReceiveMessage: body, withHeader: headers, withDestination: self.destinationFromHeader(header: headers))
                 })
             }
         } else if command == StompCommands.responseFrameReceipt {   //
