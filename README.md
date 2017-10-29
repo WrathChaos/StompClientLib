@@ -58,8 +58,11 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Requirements
 - iOS 8.0+
-- Xcode 8.1, 8.2, 8.3
+- XCode 8.1, 8.2, 8.3
+- XCode 9.0 +
 - Swift 3.0, 3.1, 3.2
+- Swift 4.0+
+
 
 ## Installation
 
@@ -120,6 +123,17 @@ print("Destination : \(destination)")
 print("JSON Body : \(String(describing: jsonBody))")
 }
 ```
+
+## didReceiveMessageWithJSONBody  ( Message Received via STOMP )
+
+Your json message will be converted to JSON Body as AnyObject and you will receive your message in this function
+```ruby
+func stompClientJSONBody(client: StompClientLib!, didReceiveMessageWithJSONBody jsonBody: String?, withHeader header: [String : String]?, withDestination destination: String) {
+print("DESTIONATION : \(destination)")
+print("String JSON BODY : \(String(describing: jsonBody))")
+}
+```
+
 
 ## serverDidSendReceipt 
 

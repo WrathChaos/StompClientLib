@@ -22,7 +22,9 @@ class ViewController: UIViewController, StompClientLibDelegate {
     func registerSocket(){
         let baseURL = "http://your-url-is-here/"
         // Cut the first 7 character which are "http://" Not necessary!!!
-        let wsURL = baseURL.substring(from:baseURL.index(baseURL.startIndex, offsetBy: 7))
+        // substring is depracated in iOS 11, use prefix instead :)
+        // let wsURL = baseURL.substring(from:baseURL.index(baseURL.startIndex, offsetBy: 7))
+        let wsURL = baseURL.prefix(7)
         let completedWSURL = "ws://\(wsURL)gateway/websocket"
         print("Completed WS URL : \(completedWSURL)")
         let url = NSURL(string: completedWSURL)!
@@ -44,17 +46,19 @@ class ViewController: UIViewController, StompClientLibDelegate {
         
     }
     
-    
     func stompClient(client: StompClientLib!, didReceiveMessageWithJSONBody jsonBody: AnyObject?, withHeader header: [String : String]?, withDestination destination: String) {
         print("DESTIONATION : \(destination)")
         print("JSON BODY : \(String(describing: jsonBody))")
     }
     
+    func stompClientJSONBody(client: StompClientLib!, didReceiveMessageWithJSONBody jsonBody: String?, withHeader header: [String : String]?, withDestination destination: String) {
+        print("DESTIONATION : \(destination)")
+        print("String JSON BODY : \(String(describing: jsonBody))")
+    }
     
     func serverDidSendReceipt(client: StompClientLib!, withReceiptId receiptId: String) {
         print("Receipt : \(receiptId)")
     }
-    
     
     func serverDidSendError(client: StompClientLib!, withErrorMessage description: String, detailedErrorMessage message: String?) {
         print("Error : \(String(describing: message))")
@@ -65,4 +69,3 @@ class ViewController: UIViewController, StompClientLibDelegate {
     }
 
 }
-

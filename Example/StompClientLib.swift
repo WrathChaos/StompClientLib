@@ -180,7 +180,7 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
         
         if let delegate = delegate {
             DispatchQueue.main.async(execute: {
-                delegate.serverDidSendError(client: self, withErrorMessage: error as! String, detailedErrorMessage: error as? String)
+                delegate.serverDidSendError(client: self, withErrorMessage: error.localizedDescription, detailedErrorMessage: error as? String)
             })
         }
     }
