@@ -124,7 +124,7 @@ print("JSON Body : \(String(describing: jsonBody))")
 }
 ```
 
-## didReceiveMessageWithJSONBody  ( Message Received via STOMP )
+## didReceiveMessageWithJSONBody  ( Message Received via STOMP as String )
 
 Your json message will be converted to JSON Body as AnyObject and you will receive your message in this function
 ```ruby
@@ -189,8 +189,8 @@ Important : You have to send your destination for both subscribe or unsubscribe!
 - [x] Complete a working Example
 - [ ] Add Carthage installation option
 - [ ] Add Swift Package Manager installation option
-- [ ] XCode 9 compatibility
-- [ ] Swift 4 compatibility and tests
+- [x] XCode 9 compatibility
+- [x] Swift 4 compatibility and tests
 - [ ] [ Add Quick Testing ](https://github.com/Quick/Quick)
 - [ ] Re-write websocket full swift version instead of Facebook's SocketRocket lib
 
