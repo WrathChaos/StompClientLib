@@ -186,11 +186,11 @@ Important : You have to send your destination for both subscribe or unsubscribe!
 
 ## Future Enhancements
 
-- [x] -Complete a working Example-
+- [x] <del>Complete a working Example<del>
 - [ ] Add Carthage installation option
 - [ ] Add Swift Package Manager installation option
-- [x] -XCode 9 compatibility-
-- [x] -Swift 4 compatibility and tests-
+- [x] <del>XCode 9 compatibility<del>
+- [x] <del>Swift 4 compatibility and tests<del>
 - [ ] [ Add Quick Testing ](https://github.com/Quick/Quick)
 - [ ] Re-write websocket full swift version instead of Facebook's SocketRocket lib
 
