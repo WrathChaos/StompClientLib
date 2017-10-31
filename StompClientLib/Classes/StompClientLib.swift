@@ -76,6 +76,11 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
     public var connection: Bool = false
     public var certificateCheckEnabled = true
     private var urlRequest: NSURLRequest?
+    // Cookie Request Getter and Setter
+    var requestCookies: [Any]? {
+        get { return socket?.requestCookies }
+        set { socket?.requestCookies = newValue }
+    }
     
     public func sendJSONForDict(dict: AnyObject, toDestination destination: String) {
         do {
