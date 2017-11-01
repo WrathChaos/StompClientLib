@@ -82,6 +82,15 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
         set { socket?.requestCookies = newValue }
     }
     
+    public var requestCookies: [Any]? {
+        get {
+            return socket?.requestCookies
+        }
+        set {
+            socket?.requestCookies = newValue
+        }
+    }
+    
     public func sendJSONForDict(dict: AnyObject, toDestination destination: String) {
         do {
             let theJSONData = try JSONSerialization.data(withJSONObject: dict, options: JSONSerialization.WritingOptions())
