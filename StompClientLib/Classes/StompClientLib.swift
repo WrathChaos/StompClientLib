@@ -77,7 +77,7 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
     public var certificateCheckEnabled = true
     private var urlRequest: NSURLRequest?
     // Cookie Request Getter and Setter
-    var requestCookies: [Any]? {
+    public var requestCookies: [Any]? {
         get { return socket?.requestCookies }
         set { socket?.requestCookies = newValue }
     }
