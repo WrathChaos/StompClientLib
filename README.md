@@ -189,10 +189,10 @@ Important : You have to send your destination for both subscribe or unsubscribe!
 ## Unsubsribe with header
 
 ```ruby
-let destination = "/topic/channel_1234"
+let destination = "/topic/your_topic"
 let ack = destination 
-let subsId = destination
-let header = ["destination": destination, "ack": ack, "id": subsId]
+let id = destination
+let header = ["destination": destination, "ack": ack, "id": id]
 
 // subscribe
 socketClient?.subscribeWithHeader(destination: destination, withHeader: header)
