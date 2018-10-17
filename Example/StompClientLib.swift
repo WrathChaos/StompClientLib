@@ -356,9 +356,10 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
             ack = StompCommands.ackAuto
             break
         }
-        
-        let headers = [StompCommands.commandHeaderDestination: destination, StompCommands.commandHeaderAck: ack, StompCommands.commandHeaderDestinationId: ""]
-        
+        var headers = [StompCommands.commandHeaderDestination: destination, StompCommands.commandHeaderAck: ack, StompCommands.commandHeaderDestinationId: ""]
+        if destination != "" {
+            headers = [StompCommands.commandHeaderDestination: destination, StompCommands.commandHeaderAck: ack, StompCommands.commandHeaderDestinationId: destination]
+        }
         self.sendFrame(command: StompCommands.commandSubscribe, header: headers, body: nil)
     }
     

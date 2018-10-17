@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'StompClientLib'
-  s.version          = '1.2.3'
+  s.version          = '1.2.4'
   s.summary          = 'Simple STOMP Client library. Swift 3, 4, 4.2 compatible'
 
 # This description is used to generate tags and improve search results.
@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-Simple STOMP Client library, Swift 3 compatible. STOMP Protocol let the program subscribe or unsubscribe the topic. It connects the websocket and use the STOMP protocol to subscribe the topic and recieve the message, receipt or even a ping.
+Simple STOMP Client library, Swift 3, 4, 4.2 compatible. STOMP Protocol let the program subscribe or unsubscribe the topic. It connects the websocket and use the STOMP protocol to subscribe the topic and recieve the message, receipt or even a ping.
                        DESC
 
   s.homepage         = 'https://github.com/wrathchaos/StompClientLib'
