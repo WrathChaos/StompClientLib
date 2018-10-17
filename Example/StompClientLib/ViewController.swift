@@ -12,28 +12,32 @@ import StompClientLib
 class ViewController: UIViewController, StompClientLibDelegate {
     
     var socketClient = StompClientLib()
-
+    let topic = "/topic/greetings"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Connection with socket
         registerSocket()
     }
     
+    @IBAction func btnPressed(_ sender: Any) {
+        socketClient.sendMessage(message: "StompClientLib Foo", toDestination: "/app/hello", withHeaders: nil, withReceipt: nil)
+    }
     func registerSocket(){
-        let baseURL = "http://your-url-is-here/"
+        let baseURL = "http://192.168.1.120:8080/"
+//        let baseURL = "205.147.102.113:8080/bitbuddy/bitbuddyLead/890/jsbhdjwl/"
         // Cut the first 7 character which are "http://" Not necessary!!!
         // substring is depracated in iOS 11, use prefix instead :)
-        // let wsURL = baseURL.substring(from:baseURL.index(baseURL.startIndex, offsetBy: 7))
-        let wsURL = baseURL.prefix(7)
-        let completedWSURL = "ws://\(wsURL)gateway/websocket"
+        let wsURL = baseURL.substring(from:baseURL.index(baseURL.startIndex, offsetBy: 7))
+        //let wsURL = baseURL.prefix(7)
+        let completedWSURL = "ws://\(wsURL)hello/websocket"
         print("Completed WS URL : \(completedWSURL)")
         let url = NSURL(string: completedWSURL)!
-        
         socketClient.openSocketWithURLRequest(request: NSURLRequest(url: url as URL) , delegate: self as StompClientLibDelegate)
     }
     
     func stompClientDidConnect(client: StompClientLib!) {
-        let topic = "/topic/your topic is here/"
+        let topic = self.topic
         print("Socket is Connected : \(topic)")
         socketClient.subscribe(destination: topic)
     }
@@ -67,5 +71,5 @@ class ViewController: UIViewController, StompClientLibDelegate {
     func serverDidSendPing() {
         print("Server Ping")
     }
-
+    
 }

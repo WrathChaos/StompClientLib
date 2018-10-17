@@ -176,7 +176,7 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
     }
     
     public func webSocket(_ webSocket: SRWebSocket!, didFailWithError error: Error!) {
-        print("didFailWithError: \(error)")
+        print("didFailWithError: \(String(describing: error))")
         
         if let delegate = delegate {
             DispatchQueue.main.async(execute: {
@@ -186,7 +186,7 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
     }
     
     public func webSocket(_ webSocket: SRWebSocket!, didCloseWithCode code: Int, reason: String!, wasClean: Bool) {
-        print("didCloseWithCode \(code), reason: \(reason)")
+        print("didCloseWithCode \(code), reason: \(String(describing: reason))")
         if let delegate = delegate {
             DispatchQueue.main.async(execute: {
                 delegate.stompClientDidDisconnect(client: self)
@@ -228,15 +228,13 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
             frameString += StompCommands.controlChar
             
             if socket?.readyState == .OPEN {
-                socket?.send(frameString)
+                 socket?.send(frameString)
             } else {
                 print("no socket connection")
                 if let delegate = delegate {
                     DispatchQueue.main.async(execute: {
                         delegate.stompClientDidDisconnect(client: self)
                     })
-                    
-                    
                 }
             }
         }
@@ -294,7 +292,7 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
                     })
                 }
             }
-        } else if command.characters.count == 0 {
+        } else if command.count == 0 {
             // Pong from the server
             socket?.send(StompCommands.commandPing)
             
@@ -336,7 +334,6 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
         if headersToSend[StompCommands.commandHeaderContentType] == nil {
             headersToSend[StompCommands.commandHeaderContentType] = "text/plain"
         }
-        
         sendFrame(command: StompCommands.commandSend, header: headersToSend, body: message as AnyObject)
     }
     
