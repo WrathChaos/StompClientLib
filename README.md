@@ -34,7 +34,9 @@ alt="Build">
 <img src="https://img.shields.io/github/issues/WrathChaos/StompClientLib.svg"
 alt="Issues">
 </a>
-<a href="https://github.com/WrathChaos/StompClientLib">
+<a href="https://github.com/WrathChaos/MJPEGStreamLib">
+<img src="https://img.shields.io/badge/Swift-4.0-orange.svg"
+alt="Swift 4.0">
 <img src="https://img.shields.io/badge/Swift-3.0-blue.svg"
 alt="Swift 3.0">
 </a>
@@ -48,7 +50,7 @@ alt="Pod Version">
 
 ## Introduction
 
-StompClientLib is a stomp client in Swift. It uses Facebook's [ SocketRocket ](https://github.com/facebook/SocketRocket) as a websocket dependency. SocketRocket is written in Objective-C but StompClientLib's STOMP part is written in Swift and its usage is Swift. You can use this library in your Swift 3.0+ and 4.0+ projects.
+StompClientLib is a stomp client in Swift. It uses Facebook's [ SocketRocket ](https://github.com/facebook/SocketRocket) as a websocket dependency. SocketRocket is written in Objective-C but StompClientLib's STOMP part is written in Swift and its usage is Swift. You can use this library in your Swift 4+ and 3+ projects.
 
 This is original a fork from [AKStompClient](https://github.com/alibasta/AKStompClient) (This library is not working right now)
 
@@ -184,6 +186,21 @@ socketClient.unsubscribe(destination: topic)
 ```
 
 Important : You have to send your destination for both subscribe or unsubscribe!
+
+## Unsubsribe with header
+
+```ruby
+let destination = "/topic/your_topic"
+let ack = destination 
+let id = destination
+let header = ["destination": destination, "ack": ack, "id": id]
+
+// subscribe
+socketClient?.subscribeWithHeader(destination: destination, withHeader: header)
+
+// unsubscribe
+socketClient?.unsubscribe(destination: subsId)
+```
 
 ## Future Enhancements
 
