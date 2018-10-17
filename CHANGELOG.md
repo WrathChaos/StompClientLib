@@ -1,5 +1,12 @@
 # Change Log
 
+## [1.2.4](https://github.com/wrathchaos/StompClientLib/tree/1.2.4) (2018-10-17)
+[Full Changelog](https://github.com/wrathchaos/StompClientLib/compare/1.2.3...1.2.4)
+
+**Closed issues:**
+
+- didCloseWithCode 1000, reason: nil [\#21](https://github.com/WrathChaos/StompClientLib/issues/21)
+
 ## [1.2.3](https://github.com/wrathchaos/StompClientLib/tree/1.2.3) (2018-10-17)
 [Full Changelog](https://github.com/wrathchaos/StompClientLib/compare/1.2.2...1.2.3)
 
