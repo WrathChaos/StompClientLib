@@ -212,6 +212,69 @@ socketClient?.unsubscribe(destination: subsId)
 - [ ] [ Add Quick Testing ](https://github.com/Quick/Quick)
 - [ ] Re-write websocket full swift version instead of Facebook's SocketRocket lib
 
+# Change Log
+
+> ## [1.2.3](https://github.com/wrathchaos/StompClientLib/tree/1.2.3) (2018-10-17)
+> [Full Changelog](https://github.com/wrathchaos/StompClientLib/compare/1.2.2...1.2.3)
+> 
+> **Implemented enhancements:**
+> 
+> - How to receive heartbeat? [\#18](https://github.com/WrathChaos/StompClientLib/issues/18)
+> 
+> **Closed issues:**
+> 
+> - Socket is not getting connected [\#30](https://github.com/WrathChaos/StompClientLib/issues/30)
+> - didCloseWithCode 1002 [\#29](https://github.com/WrathChaos/StompClientLib/issues/29)
+> - No response [\#27](https://github.com/WrathChaos/StompClientLib/issues/27)
+> - didCloseWithCode 1001, reason: "Stream end encountered" [\#26](https://github.com/WrathChaos/StompClientLib/issues/26)
+> - Stream end encountered [\#17](https://github.com/WrathChaos/StompClientLib/issues/17)
+> - unsubscribe socketclient [\#14](https://github.com/WrathChaos/StompClientLib/issues/14)
+> - It not able to connect web socket. [\#13](https://github.com/WrathChaos/StompClientLib/issues/13)
+> - One of the delegate method is not being called. [\#12](https://github.com/WrathChaos/StompClientLib/issues/12)
+> - StompClient Disconnection. [\#10](https://github.com/WrathChaos/StompClientLib/issues/10)
+> - Unable to find a specification for 'StompClientLib' [\#8](https://github.com/WrathChaos/StompClientLib/issues/8)
+> 
+> ## [1.2.2](https://github.com/wrathchaos/StompClientLib/tree/1.2.2) (2017-11-03)
+> [Full Changelog](https://github.com/wrathchaos/StompClientLib/compare/1.2.1...1.2.2)
+> 
+> ## [1.2.1](https://github.com/wrathchaos/StompClientLib/tree/1.2.1) (2017-10-31)
+> [Full Changelog](https://github.com/wrathchaos/StompClientLib/compare/1.2.0...1.2.1)
+> 
+> ## [1.2.0](https://github.com/wrathchaos/StompClientLib/tree/1.2.0) (2017-10-29)
+> [Full Changelog](https://github.com/wrathchaos/StompClientLib/compare/1.1.7...1.2.0)
+> 
+> **Closed issues:**
+> 
+> - Let client decide what to do with stomp frame body [\#4](https://github.com/WrathChaos/StompClientLib/issues/4)
+> - Send message support [\#3](https://github.com/WrathChaos/StompClientLib/issues/3)
+> - Error when calling delegate [\#1](https://github.com/WrathChaos/StompClientLib/issues/1)
+> 
+> ## [1.1.7](https://github.com/wrathchaos/StompClientLib/tree/1.1.7) (2017-10-02)
+> [Full Changelog](https://github.com/wrathchaos/StompClientLib/compare/1.1.6...1.1.7)
+> 
+> ## [1.1.6](https://github.com/wrathchaos/StompClientLib/tree/1.1.6) (2017-08-08)
+> [Full Changelog](https://github.com/wrathchaos/StompClientLib/compare/0.1.5...1.1.6)
+> 
+> ## [0.1.5](https://github.com/wrathchaos/StompClientLib/tree/0.1.5) (2017-07-10)
+> [Full Changelog](https://github.com/wrathchaos/StompClientLib/compare/0.1.4...0.1.5)
+> 
+> ## [0.1.4](https://github.com/wrathchaos/StompClientLib/tree/0.1.4) (2017-07-10)
+> [Full Changelog](https://github.com/wrathchaos/StompClientLib/compare/0.1.3...0.1.4)
+> 
+> ## [0.1.3](https://github.com/wrathchaos/StompClientLib/tree/0.1.3) (2017-07-10)
+> [Full Changelog](https://github.com/wrathchaos/StompClientLib/compare/0.1.2...0.1.3)
+> 
+> ## [0.1.2](https://github.com/wrathchaos/StompClientLib/tree/0.1.2) (2017-07-08)
+> [Full Changelog](https://github.com/wrathchaos/StompClientLib/compare/0.1.1...0.1.2)
+> 
+> ## [0.1.1](https://github.com/wrathchaos/StompClientLib/tree/0.1.1) (2017-07-08)
+> [Full Changelog](https://github.com/wrathchaos/StompClientLib/compare/0.1.0...0.1.1)
+> 
+> ## [0.1.0](https://github.com/wrathchaos/StompClientLib/tree/0.1.0) (2017-07-08)
+
+**[CHANGELOG.md](https://github.com/WrathChaos/StompClientLib/blob/master/CHANGELOG.md)**
+
+
 ## Author
 
 FreakyCoder, kurayogun@gmail.com

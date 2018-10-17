@@ -1,8 +1,7 @@
 # Change Log
 
-## [Unreleased](https://github.com/wrathchaos/StompClientLib/tree/HEAD)
-
-[Full Changelog](https://github.com/wrathchaos/StompClientLib/compare/1.2.2...HEAD)
+## [1.2.3](https://github.com/wrathchaos/StompClientLib/tree/1.2.3) (2018-10-17)
+[Full Changelog](https://github.com/wrathchaos/StompClientLib/compare/1.2.2...1.2.3)
 
 **Implemented enhancements:**
 

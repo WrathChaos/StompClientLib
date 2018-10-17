@@ -16,7 +16,6 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
-		7DE628562177544B00A86C5E /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = 7DE628552177544B00A86C5E /* CHANGELOG.md */; };
 		B4B7C9332F6F9DE78DFDBB56 /* Pods_StompClientLib_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D3686CC7F4888ECF9C8C987 /* Pods_StompClientLib_Example.framework */; };
 /* End PBXBuildFile section */
 
@@ -52,7 +51,6 @@
 		607FACE51AFB9204008FA782 /* StompClientLib_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StompClientLib_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
-		7DE628552177544B00A86C5E /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		836A1D99FAAA7EAAA4E7AB40 /* Pods_StompClientLib_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StompClientLib_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		84A05036C3F47FC6F886D001 /* Pods-StompClientLib_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StompClientLib_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-StompClientLib_Tests/Pods-StompClientLib_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		EFDE014C0409584D20FFFAE7 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
@@ -156,7 +154,6 @@
 		607FACF51AFB993E008FA782 /* Podspec Metadata */ = {
 			isa = PBXGroup;
 			children = (
-				7DE628552177544B00A86C5E /* CHANGELOG.md */,
 				1BC917E1B315D79031CDC2DB /* StompClientLib.podspec */,
 				17511BDB80AACD58C89ABB0C /* README.md */,
 				EFDE014C0409584D20FFFAE7 /* LICENSE */,
@@ -270,7 +267,6 @@
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
-				7DE628562177544B00A86C5E /* CHANGELOG.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
