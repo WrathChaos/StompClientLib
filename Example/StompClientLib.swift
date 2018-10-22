@@ -114,6 +114,23 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
         }
     }
     
+    private func closeSocket(){
+        if let delegate = delegate {
+            DispatchQueue.main.async(execute: {
+                delegate.stompClientDidDisconnect(client: self)
+                if self.socket != nil {
+                    // Close the socket
+                    self.socket!.close()
+                    self.socket!.delegate = nil
+                    self.socket = nil
+                }
+            })
+        }
+    }
+    
+    /*
+     Main Connection Method to open socket
+     */
     private func connect() {
         if socket?.readyState == .OPEN {
             // at the moment only anonymous logins
@@ -228,9 +245,8 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
             frameString += StompCommands.controlChar
             
             if socket?.readyState == .OPEN {
-                 socket?.send(frameString)
+                socket?.send(frameString)
             } else {
-                print("no socket connection")
                 if let delegate = delegate {
                     DispatchQueue.main.async(execute: {
                         delegate.stompClientDidDisconnect(client: self)
@@ -295,7 +311,6 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
         } else if command.count == 0 {
             // Pong from the server
             socket?.send(StompCommands.commandPing)
-            
             if let delegate = delegate {
                 DispatchQueue.main.async(execute: {
                     delegate.serverDidSendPing()
@@ -337,10 +352,16 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
         sendFrame(command: StompCommands.commandSend, header: headersToSend, body: message as AnyObject)
     }
     
+    /*
+     Main Connection Check Method
+     */
     public func isConnected() -> Bool{
         return connection
     }
     
+    /*
+     Main Subscribe Method with topic name
+     */
     public func subscribe(destination: String) {
         connection = true
         subscribeToDestination(destination: destination, ackMode: .AutoMode)
@@ -369,6 +390,9 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
         sendFrame(command: StompCommands.commandSubscribe, header: headerToSend, body: nil)
     }
     
+    /*
+     Main Unsubscribe Method with topic name
+     */
     public func unsubscribe(destination: String) {
         connection = false
         var headerToSend = [String: String]()
@@ -407,10 +431,59 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
         sendFrame(command: StompCommands.commandAck, header: headerToSend, body: nil)
     }
     
+    /*
+     Main Disconnection Method to close the socket
+     */
     public func disconnect() {
         connection = false
         var headerToSend = [String: String]()
         headerToSend[StompCommands.commandDisconnect] = String(Int(NSDate().timeIntervalSince1970))
         sendFrame(command: StompCommands.commandDisconnect, header: headerToSend, body: nil)
+        // Close the socket to allow recreation
+        self.closeSocket()
+    }
+    
+    // Reconnect after one sec or arg, if reconnect is available
+    // TODO: MAKE A VARIABLE TO CHECK RECONNECT OPTION IS AVAILABLE OR NOT
+    public func reconnect(request: NSURLRequest, delegate: StompClientLibDelegate, connectionHeaders: [String: String] = [String: String](), time: Double = 1.0, exponentialBackoff: Bool = true){
+        if #available(iOS 10.0, *) {
+            Timer.scheduledTimer(withTimeInterval: time, repeats: true, block: { _ in
+                self.reconnectLogic(request: request, delegate: delegate
+                    , connectionHeaders: connectionHeaders)
+            })
+        } else {
+            // Fallback on earlier versions
+            // Swift >=3 selector syntax
+            //            Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.reconnectFallback), userInfo: nil, repeats: true)
+            print("Reconnect Feature has no support for below iOS 10, it is going to be available soon!")
+        }
+    }
+    //    @objc func reconnectFallback() {
+    //        reconnectLogic(request: request, delegate: delegate, connectionHeaders: connectionHeaders)
+    //    }
+    
+    private func reconnectLogic(request: NSURLRequest, delegate: StompClientLibDelegate, connectionHeaders: [String: String] = [String: String]()){
+        // Check if connection is alive or dead
+        if (!self.isConnected()){
+            self.checkConnectionHeader(connectionHeaders: connectionHeaders) ? self.openSocketWithURLRequest(request: request, delegate: delegate, connectionHeaders: connectionHeaders) : self.openSocketWithURLRequest(request: request, delegate: delegate)
+        }
+    }
+    
+    private func checkConnectionHeader(connectionHeaders: [String: String] = [String: String]()) -> Bool{
+        if (connectionHeaders.isEmpty){
+            // No connection header
+            return false
+        } else {
+            // There is a connection header
+            return true
+        }
+    }
+    
+    // Autodisconnect with a given time
+    public func autoDisconnect(time: Double){
+        DispatchQueue.main.asyncAfter(deadline: .now() + time) {
+            // Disconnect the socket
+            self.disconnect()
+        }
     }
 }
