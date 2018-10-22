@@ -225,8 +225,20 @@ socketClient.autoDisconnect(time: 3)
 - [ ] Re-write websocket full swift version instead of Facebook's SocketRocket lib
 
 # Change Log
+
 > 
-> ## [1.2.4](https://github.com/wrathchaos/StompClientLib/tree/1.2.4) (2018-10-17)
+> ## [1.2.5](https://github.com/wrathchaos/StompClientLib/tree/1.2.5) (2018-10-22)
+> [ Full Changelog](https://github.com/wrathchaos/StompClientLib/compare/1.2.4...1.2.5)
+> 
+> **Closed issues:**
+> 
+> - Value for "message-id" is always "1" [\#22](https://github.com/WrathChaos/StompClientLib/issues/22)
+> - Multiple subscription to topics [\#20](https://github.com/WrathChaos/StompClientLib/issues/20)
+> - I think there is a memory leak for the delegate [\#19](https://github.com/WrathChaos/StompClientLib/issues/19)
+> - Getting error when framwork is installed in Objective c project [\#9](https://github.com/WrathChaos/StompClientLib/issues/9)
+> 
+> 
+>  ## [1.2.4](https://github.com/wrathchaos/StompClientLib/tree/1.2.4) (2018-10-17)
 > [Full Changelog](https://github.com/wrathchaos/StompClientLib/compare/1.2.3...1.2.4)
 > 
 > **Closed issues:**
