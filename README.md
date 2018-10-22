@@ -26,16 +26,8 @@ alt="Downloads">
 
 
 <p align="center">
-<a href="https://github.com/WrathChaos/StompClientLib">
-<img src="http://img.shields.io/travis/wrathchaos/StompClientLib.svg"
-alt="Build">
-</a>
-<a href="https://github.com/WrathChaos/StompClientLib">
-<img src="https://img.shields.io/github/issues/WrathChaos/StompClientLib.svg"
-alt="Issues">
-</a>
 <a href="https://github.com/WrathChaos/MJPEGStreamLib">
-<img src="https://img.shields.io/badge/Swift-4.0-orange.svg"
+<img src="https://img.shields.io/badge/Swift-4.2-orange.svg"
 alt="Swift 4.0">
 <img src="https://img.shields.io/badge/Swift-3.0-blue.svg"
 alt="Swift 3.0">
@@ -43,6 +35,10 @@ alt="Swift 3.0">
 <a href="https://github.com/WrathChaos/StompClientLib">
 <img src="https://img.shields.io/cocoapods/v/StompClientLib.svg"
 alt="Pod Version">
+</a>
+<a href="https://github.com/WrathChaos/StompClientLib">
+<img src="https://img.shields.io/github/issues/WrathChaos/StompClientLib.svg"
+alt="Issues">
 </a>
 </p>
 
@@ -201,6 +197,22 @@ socketClient?.subscribeWithHeader(destination: destination, withHeader: header)
 // unsubscribe
 socketClient?.unsubscribe(destination: subsId)
 ```
+
+## Auto Reconnect with a given time
+You can use this feature if you need to auto reconnect with a  spesific time or it will just try to reconnect every second. 
+
+```ruby
+// Reconnect after 4 sec
+socketClient.reconnect(request: NSURLRequest(url: url as URL) , delegate: self as StompClientLibDelegate, time: 4.0)
+```
+
+## Auto Disconnect with a given time
+
+```ruby
+// Auto Disconnect after 3 sec
+socketClient.autoDisconnect(time: 3)
+```
+
 
 ## Future Enhancements
 
