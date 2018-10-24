@@ -225,7 +225,20 @@ socketClient.autoDisconnect(time: 3)
 - [ ] Re-write websocket full swift version instead of Facebook's SocketRocket lib
 
 # Change Log
-
+>
+> ## [1.2.7](https://github.com/wrathchaos/StompClientLib/tree/1.2.7) (2018-10-23)
+> [Full Changelog](https://github.com/wrathchaos/StompClientLib/compare/1.2.6...1.2.7)
+> 
+> ## [1.2.6](https://github.com/wrathchaos/StompClientLib/tree/1.2.6) (2018-10-23)
+> [Full Changelog](https://github.com/wrathchaos/StompClientLib/compare/1.2.5...1.2.6)
+> 
+> **Fixed bugs:**
+>
+> - Error when connected to socket [\#23](https://github.com/WrathChaos/StompClientLib/issues/23)
+>
+> **Closed issues:**
+>
+> - Auto disconnects [\#11](https://github.com/WrathChaos/StompClientLib/issues/11)
 > 
 > ## [1.2.5](https://github.com/wrathchaos/StompClientLib/tree/1.2.5) (2018-10-22)
 > [ Full Changelog](https://github.com/wrathchaos/StompClientLib/compare/1.2.4...1.2.5)
