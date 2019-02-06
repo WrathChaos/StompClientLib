@@ -217,7 +217,7 @@ socketClient.autoDisconnect(time: 3)
 ## Future Enhancements
 
 - [x] <del>Complete a working Example<del>
-- [ ] Add Carthage installation option
+- [x] <del>Add Carthage installation option<del>
 - [ ] Add Swift Package Manager installation option
 - [x] <del>XCode 9 compatibility<del>
 - [x] <del>Swift 4 compatibility and tests<del>
