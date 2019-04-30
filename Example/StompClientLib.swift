@@ -133,6 +133,8 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
      */
     private func connect() {
         if socket?.readyState == .OPEN {
+            // Support for Spring Boot 2.1.x
+            connectionHeaders = [StompCommands.commandHeaderAcceptVersion:"1.1,1.2"]
             // at the moment only anonymous logins
             self.sendFrame(command: StompCommands.commandConnect, header: connectionHeaders, body: nil)
         } else {

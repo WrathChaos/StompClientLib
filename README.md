@@ -17,18 +17,15 @@ alt="platform">
 <img src="https://img.shields.io/badge/CocoaPods-compatible-4BC51D.svg"
 alt="Cocoapods">
 </a>
-<a href="https://github.com/WrathChaos/StompClientLib">
-<img src="https://img.shields.io/cocoapods/dt/StompClientLib.svg"
-alt="Downloads">
-</a>
 </p>
-
 
 
 <p align="center">
 <a href="https://github.com/WrathChaos/MJPEGStreamLib">
+<img src="https://img.shields.io/badge/Swift-5.0-red.svg"
+alt="Swift 5.0">
 <img src="https://img.shields.io/badge/Swift-4.2-orange.svg"
-alt="Swift 4.0">
+alt="Swift 4.2">
 <img src="https://img.shields.io/badge/Swift-3.0-blue.svg"
 alt="Swift 3.0">
 </a>

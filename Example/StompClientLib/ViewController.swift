@@ -30,7 +30,7 @@ class ViewController: UIViewController, StompClientLibDelegate {
         // substring is depracated in iOS 11, use prefix instead :)
         let wsURL = baseURL.substring(from:baseURL.index(baseURL.startIndex, offsetBy: 7))
         let completedWSURL = "ws://\(wsURL)hello/websocket"
-        print("Completed WS URL : \(completedWSURL)")
+        
         url = NSURL(string: completedWSURL)!
         socketClient.openSocketWithURLRequest(request: NSURLRequest(url: url as URL) , delegate: self as StompClientLibDelegate)
     }
