@@ -43,7 +43,7 @@ alt="Issues">
 
 ## Introduction
 
-StompClientLib is a stomp client in Swift. It uses Facebook's [ SocketRocket ](https://github.com/facebook/SocketRocket) as a websocket dependency. SocketRocket is written in Objective-C but StompClientLib's STOMP part is written in Swift and its usage is Swift. You can use this library in your Swift 4+ and 3+ projects.
+StompClientLib is a stomp client in Swift. It uses Facebook's [ SocketRocket ](https://github.com/facebook/SocketRocket) as a websocket dependency. SocketRocket is written in Objective-C but StompClientLib's STOMP part is written in Swift and its usage is Swift. You can use this library in your Swift 5+, 4+ and 3+ projects.
 
 This is original a fork from [AKStompClient](https://github.com/alibasta/AKStompClient) (This library is not working right now)
 
