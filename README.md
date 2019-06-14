@@ -110,13 +110,6 @@ print("Socket is Disconnected")
 }
 ```
 
-## stompClientWillDisconnect
-```ruby
-func stompClientWillDisconnect(client: StompClientLib!, withError error: NSError) {
-
-}
-```
-
 ## didReceiveMessageWithJSONBody  ( Message Received via STOMP )
 
 Your json message will be converted to JSON Body as AnyObject and you will receive your message in this function

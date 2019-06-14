@@ -49,11 +49,6 @@ class ViewController: UIViewController, StompClientLibDelegate {
         print("Socket is Disconnected")
     }
     
-    func stompClientWillDisconnect(client: StompClientLib!, withError error: NSError) {
-        print("Socket will is Disconnected")
-        
-    }
-    
     func stompClient(client: StompClientLib!, didReceiveMessageWithJSONBody jsonBody: AnyObject?, withHeader header: [String : String]?, withDestination destination: String) {
         print("DESTIONATION : \(destination)")
         print("JSON BODY : \(String(describing: jsonBody))")
