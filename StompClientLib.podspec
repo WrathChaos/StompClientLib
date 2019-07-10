@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'StompClientLib'
-  s.version          = '1.3.1'
+  s.version          = '1.3.2'
   s.summary          = 'Simple STOMP Client library. Swift 3, 4, 4.2, 5 compatible'
   s.swift_version = '4.0', '4.2', '5.0'
 
