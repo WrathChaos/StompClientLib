@@ -72,7 +72,7 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
     var sessionId: String?
     var delegate: StompClientLibDelegate?
     var connectionHeaders: [String: String]?
-    public var connection: Bool = false
+    private(set) var isConnected: Bool = false
     public var certificateCheckEnabled = true
     private var urlRequest: NSURLRequest?
     
@@ -98,7 +98,7 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
     public func openSocketWithURLRequest(request: NSURLRequest, delegate: StompClientLibDelegate, connectionHeaders: [String: String]?) {
         self.connectionHeaders = connectionHeaders
         openSocketWithURLRequest(request: request, delegate: delegate)
-        self.connection = true
+        isConnected = true
     }
     
     private func openSocket() {
@@ -356,14 +356,15 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
      Main Connection Check Method
      */
     public func isConnected() -> Bool{
-        return connection
+        print("isConnected() method is deprecated, please use isConnected instead")
+        return isConnected
     }
     
     /*
      Main Subscribe Method with topic name
      */
     public func subscribe(destination: String) {
-        connection = true
+        isConnected = true
         subscribeToDestination(destination: destination, ackMode: .AutoMode)
     }
     
@@ -394,7 +395,7 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
      Main Unsubscribe Method with topic name
      */
     public func unsubscribe(destination: String) {
-        connection = false
+        isConnected = false
         var headerToSend = [String: String]()
         headerToSend[StompCommands.commandHeaderDestinationId] = destination
         sendFrame(command: StompCommands.commandUnsubscribe, header: headerToSend, body: nil)
@@ -435,7 +436,7 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
      Main Disconnection Method to close the socket
      */
     public func disconnect() {
-        connection = false
+        isConnected = false
         var headerToSend = [String: String]()
         headerToSend[StompCommands.commandDisconnect] = String(Int(NSDate().timeIntervalSince1970))
         sendFrame(command: StompCommands.commandDisconnect, header: headerToSend, body: nil)
@@ -464,7 +465,7 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
     
     private func reconnectLogic(request: NSURLRequest, delegate: StompClientLibDelegate, connectionHeaders: [String: String] = [String: String]()){
         // Check if connection is alive or dead
-        if (!self.isConnected()){
+        if (!isConnected){
             self.checkConnectionHeader(connectionHeaders: connectionHeaders) ? self.openSocketWithURLRequest(request: request, delegate: delegate, connectionHeaders: connectionHeaders) : self.openSocketWithURLRequest(request: request, delegate: delegate)
         }
     }
