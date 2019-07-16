@@ -163,7 +163,7 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
                         } else {
                             let parts = line.components(separatedBy: ":")
                             if let key = parts.first {
-                                headers[key] = parts.last
+                                headers[key] = parts.dropFirst().joined(separator: ":")
                             }
                         }
                     }
