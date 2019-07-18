@@ -114,9 +114,10 @@ print("Socket is Disconnected")
 
 Your json message will be converted to JSON Body as AnyObject and you will receive your message in this function
 ```ruby
-func stompClient(client: StompClientLib!, didReceiveMessageWithJSONBody jsonBody: AnyObject?, withHeader header: [String : String]?, withDestination destination: String) {
+func stompClient(client: StompClientLib!, didReceiveMessageWithJSONBody jsonBody: AnyObject?, akaStringBody stringBody: String?, withHeader header: [String : String]?, withDestination destination: String) {
 print("Destination : \(destination)")
 print("JSON Body : \(String(describing: jsonBody))")
+print("String Body : \(stringBody ?? "nil")")
 }
 ```
 
