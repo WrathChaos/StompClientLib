@@ -224,8 +224,6 @@ socketClient.autoDisconnect(time: 3)
 
 # Change Log
 
-## [Unreleased](https://github.com/WrathChaos/StompClientLib/tree/HEAD)
-
 [Full Changelog](https://github.com/WrathChaos/StompClientLib/compare/1.3.5...HEAD)
 
 **Fixed bugs:**
