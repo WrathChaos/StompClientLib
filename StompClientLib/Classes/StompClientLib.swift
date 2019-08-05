@@ -25,6 +25,7 @@ struct StompCommands {
     static let controlChar = String(format: "%C", arguments: [0x00])
     
     // Ack Mode
+    static let ackClientIndividual = "client-individual"
     static let ackClient = "client"
     static let ackAuto = "auto"
     // Header Commands
@@ -35,7 +36,7 @@ struct StompCommands {
     static let commandHeaderContentType = "content-type"
     static let commandHeaderAck = "ack"
     static let commandHeaderTransaction = "transaction"
-    static let commandHeaderMessageId = "message-id"
+    static let commandHeaderMessageId = "id"
     static let commandHeaderSubscription = "subscription"
     static let commandHeaderDisconnected = "disconnected"
     static let commandHeaderHeartBeat = "heart-beat"
@@ -54,6 +55,7 @@ struct StompCommands {
 public enum StompAckMode {
     case AutoMode
     case ClientMode
+    case ClientIndividualMode
 }
 
 // Fundamental Protocols
@@ -376,6 +378,9 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
         switch ackMode {
         case StompAckMode.ClientMode:
             ack = StompCommands.ackClient
+            break
+        case StompAckMode.ClientIndividaulMode:
+            ack = StompCommands.ackClientIndividual
             break
         default:
             ack = StompCommands.ackAuto
