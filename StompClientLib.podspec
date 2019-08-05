@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
   s.name             = 'DTStompClientLib'
   s.version          = '1.3.5'
   s.summary          = 'Simple STOMP Client library. Swift 3, 4, 4.2, 5 compatible'
-  s.swift_version = '4.0', '4.2', '5.0'
+  s.swift_version = '4.0'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
