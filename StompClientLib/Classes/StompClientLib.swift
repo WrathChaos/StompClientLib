@@ -379,7 +379,7 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
         case StompAckMode.ClientMode:
             ack = StompCommands.ackClient
             break
-        case StompAckMode.ClientIndividaulMode:
+        case StompAckMode.ClientIndividualMode:
             ack = StompCommands.ackClientIndividual
             break
         default:
