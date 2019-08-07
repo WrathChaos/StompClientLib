@@ -1,10 +1,19 @@
 # Change Log
 
-[Full Changelog](https://github.com/WrathChaos/StompClientLib/compare/1.3.5...HEAD)
+## [1.3.6](https://github.com/WrathChaos/StompClientLib/tree/1.3.6) (2019-08-06)
+[Full Changelog](https://github.com/WrathChaos/StompClientLib/compare/1.3.5...1.3.6)
 
 **Fixed bugs:**
 
 - v1.3.4 replaced my custom header in open socket? [\#58](https://github.com/WrathChaos/StompClientLib/issues/58)
+
+**Closed issues:**
+
+- Json error: The data couldn’t be read because it isn’t in the correct format. [\#60](https://github.com/WrathChaos/StompClientLib/issues/60)
+
+**Merged pull requests:**
+
+- Fixed ACK id header and added new ACK type [\#62](https://github.com/WrathChaos/StompClientLib/pull/62) ([rodmytro](https://github.com/rodmytro))
 
 ## [1.3.5](https://github.com/WrathChaos/StompClientLib/tree/1.3.5) (2019-07-25)
 [Full Changelog](https://github.com/WrathChaos/StompClientLib/compare/1.3.4...1.3.5)
