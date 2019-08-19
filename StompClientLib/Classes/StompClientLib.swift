@@ -90,16 +90,12 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
         }
     }
     
-    public func openSocketWithURLRequest(request: NSURLRequest, delegate: StompClientLibDelegate) {
+    public func openSocketWithURLRequest(request: NSURLRequest, delegate: StompClientLibDelegate, connectionHeaders: [String: String]? = nil) {
+        self.connectionHeaders = connectionHeaders
         self.delegate = delegate
         self.urlRequest = request
         // Opening the socket
         openSocket()
-    }
-    
-    public func openSocketWithURLRequest(request: NSURLRequest, delegate: StompClientLibDelegate, connectionHeaders: [String: String]?) {
-        self.connectionHeaders = connectionHeaders
-        openSocketWithURLRequest(request: request, delegate: delegate)
         self.connection = true
     }
     
@@ -136,8 +132,10 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
     private func connect() {
         if socket?.readyState == .OPEN {
             // Support for Spring Boot 2.1.x
-            if (connectionHeaders == nil) {
-            	connectionHeaders = [StompCommands.commandHeaderAcceptVersion:"1.1,1.2"]
+            if connectionHeaders == nil {
+                connectionHeaders = [StompCommands.commandHeaderAcceptVersion:"1.1,1.2"]
+            } else {
+                connectionHeaders?[StompCommands.commandHeaderAcceptVersion] = "1.1,1.2"
             }
             // at the moment only anonymous logins
             self.sendFrame(command: StompCommands.commandConnect, header: connectionHeaders, body: nil)
@@ -496,3 +494,4 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
         }
     }
 }
+
