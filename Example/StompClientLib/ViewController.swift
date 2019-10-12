@@ -40,7 +40,7 @@ class ViewController: UIViewController, StompClientLibDelegate {
         print("Socket is Connected : \(topic)")
         socketClient.subscribe(destination: topic)
         // Auto Disconnect after 3 sec
-        socketClient.autoDisconnect(time: 5)
+        socketClient.autoDisconnect(time: 3)
         // Reconnect after 4 sec
         socketClient.reconnect(request: NSURLRequest(url: url as URL) , delegate: self as StompClientLibDelegate, time: 4.0)
     }
