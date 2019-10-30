@@ -130,8 +130,8 @@ Your json message will be converted to JSON Body as AnyObject and you will recei
 
 ```swift
 func stompClientJSONBody(client: StompClientLib!, didReceiveMessageWithJSONBody jsonBody: String?, withHeader header: [String : String]?, withDestination destination: String) {
-print("DESTIONATION : \(destination)")
-print("String JSON BODY : \(String(describing: jsonBody))")
+  print("DESTIONATION : \(destination)")
+  print("String JSON BODY : \(String(describing: jsonBody))")
 }
 ```
 
@@ -141,7 +141,7 @@ If you will use STOMP for in-app purchase, you might need to use this function t
 
 ```swift
 func serverDidSendReceipt(client: StompClientLib!, withReceiptId receiptId: String) {
-print("Receipt : \(receiptId)")
+  print("Receipt : \(receiptId)")
 }
 ```
 
@@ -151,7 +151,7 @@ Your error message will be received in this function
 
 ```swift
 func serverDidSendError(client: StompClientLib!, withErrorMessage description: String, detailedErrorMessage message: String?) {
-print("Error Send : \(String(describing: message))")
+  print("Error Send : \(String(describing: message))")
 }
 ```
 
@@ -161,7 +161,7 @@ If you need to control your server's ping, here is your part
 
 ```swift
 func serverDidSendPing() {
-print("Server ping")
+  print("Server ping")
 }
 ```
 
@@ -219,13 +219,11 @@ socketClient.autoDisconnect(time: 3)
 
 ## Future Enhancements
 
-- [x] <del>Complete a working Example<del>
-- [x] <del>Add Carthage installation option<del>
+- [x] ~~Complete a working Example~~
+- [x] ~~Add Carthage installation option~~
 - [ ] Add Swift Package Manager installation option
-- [x] <del>XCode 9 compatibility<del>
-- [x] <del>Swift 4 compatibility and tests<del>
-- [ ] [ Add Quick Testing ](https://github.com/Quick/Quick)
-- [ ] Re-write websocket full swift version instead of Facebook's SocketRocket lib
+- [x] ~~XCode 9 compatibility~~
+- [x] ~~Swift 4 compatibility and tests~~
 
 # Change Log
 
