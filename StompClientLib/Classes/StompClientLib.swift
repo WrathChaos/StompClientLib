@@ -66,8 +66,14 @@ public protocol StompClientLibDelegate {
     func stompClientDidConnect(client: StompClientLib!)
     func serverDidSendReceipt(client: StompClientLib!, withReceiptId receiptId: String)
     func serverDidSendError(client: StompClientLib!, withErrorMessage description: String, detailedErrorMessage message: String?)
+    func serverDidSendError(client: StompClientLib!, withError: Error)
     func serverDidSendPing()
 }
+
+extension StompClientLibDelegate {
+    func serverDidSendError(client: StompClientLib!, withErrorMessage description: String, detailedErrorMessage message: String?) { }
+}
+
 
 public class StompClientLib: NSObject, SRWebSocketDelegate {
     var socket: SRWebSocket?
@@ -204,6 +210,7 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
         if let delegate = delegate {
             DispatchQueue.main.async(execute: {
                 delegate.serverDidSendError(client: self, withErrorMessage: error.localizedDescription, detailedErrorMessage: error as? String)
+                delegate.serverDidSendError(client: self, withError: error)
             })
         }
     }
@@ -250,15 +257,16 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
             
             frameString += StompCommands.controlChar
             
-            if socket?.readyState == .OPEN {
-                socket?.send(frameString)
-            } else {
-                if let delegate = delegate {
-                    DispatchQueue.main.async(execute: {
-                        delegate.stompClientDidDisconnect(client: self)
-                    })
-                }
-            }
+            DispatchQueue.main.async(execute: {
+                self.heartbeat.renewClientHeartBeat()
+            })
+            socket?.send(frameString)
+        }
+        else {
+            guard let delegate = delegate  else { return }
+            DispatchQueue.main.async(execute: {
+                delegate.stompClientDidDisconnect(client: self)
+            })
         }
     }
     
