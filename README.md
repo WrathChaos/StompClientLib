@@ -226,7 +226,6 @@ This is just an example. You need to convert to your implementation.
 let connectFrame = "CONNECT\n login:admin\n passcode:password\n\n\n\0"
 socket.write(string: connectFrame)
 ```
-```We just need to write 
 
 ## Future Enhancements
 
