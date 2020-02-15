@@ -220,7 +220,7 @@ socketClient.autoDisconnect(time: 3)
 ## Login Passcode Implementation
 
 This is just an example. You need to convert to your implementation.
-#42 
+[#42](https://github.com/WrathChaos/StompClientLib/issues/42) 
 
 ```swift
 let connectFrame = "CONNECT\n login:admin\n passcode:password\n\n\n\0"
