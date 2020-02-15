@@ -217,6 +217,17 @@ socketClient.reconnect(request: NSURLRequest(url: url as URL) , delegate: self a
 socketClient.autoDisconnect(time: 3)
 ```
 
+## Login Passcode Implementation
+
+This is just an example. You need to convert to your implementation.
+#42 
+
+```swift
+let connectFrame = "CONNECT\n login:admin\n passcode:password\n\n\n\0"
+socket.write(string: connectFrame)
+```
+```We just need to write 
+
 ## Future Enhancements
 
 - [x] ~~Complete a working Example~~
