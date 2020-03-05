@@ -59,7 +59,7 @@ public enum StompAckMode {
 }
 
 // Fundamental Protocols
-public protocol StompClientLibDelegate {
+public protocol StompClientLibDelegate: class {
     func stompClient(client: StompClientLib!, didReceiveMessageWithJSONBody jsonBody: AnyObject?, akaStringBody stringBody: String?, withHeader header:[String:String]?, withDestination destination: String)
     
     func stompClientDidDisconnect(client: StompClientLib!)
