@@ -72,7 +72,7 @@ public protocol StompClientLibDelegate {
 public class StompClientLib: NSObject, SRWebSocketDelegate {
     var socket: SRWebSocket?
     var sessionId: String?
-    var delegate: StompClientLibDelegate?
+    weak var delegate: StompClientLibDelegate?
     var connectionHeaders: [String: String]?
     public var connection: Bool = false
     public var certificateCheckEnabled = true
