@@ -72,7 +72,7 @@ pod "StompClientLib"
 #### Carthage
 
 ```ruby
-github "soledue/StompClientLib"
+github "WrathChaos/StompClientLib"
 ```
 
 ## Usage
