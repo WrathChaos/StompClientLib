@@ -22,11 +22,11 @@ Pod::Spec.new do |s|
 Simple STOMP Client library, Swift 3, 4, 4.2, 5 compatible. STOMP Protocol let the program subscribe or unsubscribe the topic. It connects the websocket and use the STOMP protocol to subscribe the topic and recieve the message, receipt or even a ping.
                        DESC
 
-  s.homepage         = 'https://github.com/wrathchaos/StompClientLib'
+  s.homepage         = 'https://github.com/MrRealBlack/StompClientLib'
   # s.screenshots    = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'FreakyCoder' => 'kurayogun@gmail.com' }
-  s.source           = { :git => 'https://github.com/wrathchaos/StompClientLib.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/MrRealBlack/StompClientLib.git', :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/freakycodercom'
 
   s.ios.deployment_target = '9.0'
