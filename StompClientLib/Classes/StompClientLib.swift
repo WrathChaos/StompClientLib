@@ -9,7 +9,7 @@
 import UIKit
 import SocketRocket
 
-struct StompCommands {
+public struct StompCommands {
     // Basic Commands
     static let commandConnect = "CONNECT"
     static let commandSend = "SEND"
@@ -69,7 +69,7 @@ public protocol StompClientLibDelegate: class {
     func serverDidSendPing()
 }
 
-public class StompClientLib: NSObject, SRWebSocketDelegate {
+open class StompClientLib: NSObject, SRWebSocketDelegate {
     var socket: SRWebSocket?
     var sessionId: String?
     weak var delegate: StompClientLibDelegate?
