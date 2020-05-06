@@ -1,7 +1,66 @@
-# Change Log
+# Changelog
+
+[Full Changelog](https://github.com/WrathChaos/StompClientLib/compare/1.3.8...HEAD)
+
+**Implemented enhancements:**
+
+- SUBSCRIBE and UNSUBSCRIBE Delegate is missing [\#16](https://github.com/WrathChaos/StompClientLib/issues/16)
+
+**Closed issues:**
+
+- Error Domain=SRWebSocketErrorDomain Code=2132 "received bad response code from server 403" [\#86](https://github.com/WrathChaos/StompClientLib/issues/86)
+- the delegate should be weak [\#83](https://github.com/WrathChaos/StompClientLib/issues/83)
+
+## [1.3.8](https://github.com/WrathChaos/StompClientLib/tree/1.3.8) (2020-03-08)
+
+[Full Changelog](https://github.com/WrathChaos/StompClientLib/compare/1.3.7...1.3.8)
+
+**Implemented enhancements:**
+
+- Socket stopped working once I moved from ws//: to wss//: [\#67](https://github.com/WrathChaos/StompClientLib/issues/67)
+- Self sign certificate, 400 error [\#66](https://github.com/WrathChaos/StompClientLib/issues/66)
+- How to increase output buffer [\#37](https://github.com/WrathChaos/StompClientLib/issues/37)
+
+**Fixed bugs:**
+
+- unable to install [\#78](https://github.com/WrathChaos/StompClientLib/issues/78)
+- Number of received messages is limited [\#76](https://github.com/WrathChaos/StompClientLib/issues/76)
+
+**Closed issues:**
+
+- Can't find header in initial call [\#81](https://github.com/WrathChaos/StompClientLib/issues/81)
+- Can't connect to websocket : received bad response code from server 422 [\#80](https://github.com/WrathChaos/StompClientLib/issues/80)
+- I just closed the issue because of the stale & reproducible problem [\#79](https://github.com/WrathChaos/StompClientLib/issues/79)
+- unable to install [\#77](https://github.com/WrathChaos/StompClientLib/issues/77)
+- stompClientDidConnect not called with Spring boot [\#73](https://github.com/WrathChaos/StompClientLib/issues/73)
+- Issue with Cookies in header [\#71](https://github.com/WrathChaos/StompClientLib/issues/71)
+- Can't see any Websocket traffic in Charles Proxy [\#70](https://github.com/WrathChaos/StompClientLib/issues/70)
+- End of stream error [\#69](https://github.com/WrathChaos/StompClientLib/issues/69)
+- Cannot connect with Stomp Websocket when custom header [\#64](https://github.com/WrathChaos/StompClientLib/issues/64)
+- Can't connect Socket with Spring Boot 2.x.x [\#63](https://github.com/WrathChaos/StompClientLib/issues/63)
+- Multiple clients [\#48](https://github.com/WrathChaos/StompClientLib/issues/48)
+- IPV6 [\#38](https://github.com/WrathChaos/StompClientLib/issues/38)
+
+**Merged pull requests:**
+
+- fix delegate [\#84](https://github.com/WrathChaos/StompClientLib/pull/84) ([soledue](https://github.com/soledue))
+- Fix typo [\#74](https://github.com/WrathChaos/StompClientLib/pull/74) ([wanbok](https://github.com/wanbok))
+
+## [1.3.7](https://github.com/WrathChaos/StompClientLib/tree/1.3.7) (2019-08-26)
+
+[Full Changelog](https://github.com/WrathChaos/StompClientLib/compare/1.3.6...1.3.7)
+
+**Closed issues:**
+
+- The problem when receiving the messages from the Spring boot. [\#68](https://github.com/WrathChaos/StompClientLib/issues/68)
 
 ## [1.3.6](https://github.com/WrathChaos/StompClientLib/tree/1.3.6) (2019-08-06)
+
 [Full Changelog](https://github.com/WrathChaos/StompClientLib/compare/1.3.5...1.3.6)
+
+**Implemented enhancements:**
+
+- Refactor code and fix support spring 2.1.x [\#65](https://github.com/WrathChaos/StompClientLib/pull/65) ([baonguyena1](https://github.com/baonguyena1))
 
 **Fixed bugs:**
 
@@ -16,6 +75,7 @@
 - Fixed ACK id header and added new ACK type [\#62](https://github.com/WrathChaos/StompClientLib/pull/62) ([rodmytro](https://github.com/rodmytro))
 
 ## [1.3.5](https://github.com/WrathChaos/StompClientLib/tree/1.3.5) (2019-07-25)
+
 [Full Changelog](https://github.com/WrathChaos/StompClientLib/compare/1.3.4...1.3.5)
 
 **Fixed bugs:**
@@ -32,9 +92,11 @@
 - \#58 fix open socket with custom header issue [\#59](https://github.com/WrathChaos/StompClientLib/pull/59) ([marain87](https://github.com/marain87))
 
 ## [1.3.4](https://github.com/WrathChaos/StompClientLib/tree/1.3.4) (2019-07-19)
+
 [Full Changelog](https://github.com/WrathChaos/StompClientLib/compare/1.3.3...1.3.4)
 
 ## [1.3.3](https://github.com/WrathChaos/StompClientLib/tree/1.3.3) (2019-07-18)
+
 [Full Changelog](https://github.com/WrathChaos/StompClientLib/compare/1.3.2...1.3.3)
 
 **Closed issues:**
@@ -47,17 +109,15 @@
 - String body parameter and ':'-in-header-value fix [\#56](https://github.com/WrathChaos/StompClientLib/pull/56) ([Erhannis](https://github.com/Erhannis))
 
 ## [1.3.2](https://github.com/WrathChaos/StompClientLib/tree/1.3.2) (2019-07-10)
+
 [Full Changelog](https://github.com/WrathChaos/StompClientLib/compare/1.3.1...1.3.2)
 
 **Implemented enhancements:**
 
 - stompClientWillDisconnect missing [\#44](https://github.com/WrathChaos/StompClientLib/issues/44)
 
-**Merged pull requests:**
-
-- Added 'akaStringBody' parameter to stompClient didReceiveMessage... [\#49](https://github.com/WrathChaos/StompClientLib/pull/49) ([Erhannis](https://github.com/Erhannis))
-
 ## [1.3.1](https://github.com/WrathChaos/StompClientLib/tree/1.3.1) (2019-06-14)
+
 [Full Changelog](https://github.com/WrathChaos/StompClientLib/compare/1.3.0...1.3.1)
 
 **Closed issues:**
@@ -72,6 +132,7 @@
 - Delegate StompClientDidConnect not called after connect-\>disconnect-\>connect [\#15](https://github.com/WrathChaos/StompClientLib/issues/15)
 
 ## [1.3.0](https://github.com/WrathChaos/StompClientLib/tree/1.3.0) (2019-04-30)
+
 [Full Changelog](https://github.com/WrathChaos/StompClientLib/compare/1.2.7...1.3.0)
 
 **Implemented enhancements:**
@@ -83,12 +144,14 @@
 - Should add Carthage [\#33](https://github.com/WrathChaos/StompClientLib/issues/33)
 - Invalid Sec-WebSocket-Accept response [\#32](https://github.com/WrathChaos/StompClientLib/issues/32)
 - Socket is disconnected with 1007 code as soon as it connected [\#31](https://github.com/WrathChaos/StompClientLib/issues/31)
-- enable Assert \(self.readyState != SR\_CONNECTING\) [\#24](https://github.com/WrathChaos/StompClientLib/issues/24)
+- enable Assert \(self.readyState != SR_CONNECTING\) [\#24](https://github.com/WrathChaos/StompClientLib/issues/24)
 
 ## [1.2.7](https://github.com/WrathChaos/StompClientLib/tree/1.2.7) (2018-10-23)
+
 [Full Changelog](https://github.com/WrathChaos/StompClientLib/compare/1.2.6...1.2.7)
 
 ## [1.2.6](https://github.com/WrathChaos/StompClientLib/tree/1.2.6) (2018-10-23)
+
 [Full Changelog](https://github.com/WrathChaos/StompClientLib/compare/1.2.5...1.2.6)
 
 **Fixed bugs:**
@@ -100,6 +163,7 @@
 - Auto disconnects [\#11](https://github.com/WrathChaos/StompClientLib/issues/11)
 
 ## [1.2.5](https://github.com/WrathChaos/StompClientLib/tree/1.2.5) (2018-10-22)
+
 [Full Changelog](https://github.com/WrathChaos/StompClientLib/compare/1.2.4...1.2.5)
 
 **Closed issues:**
@@ -110,6 +174,7 @@
 - Getting error when framwork is installed in Objective c project [\#9](https://github.com/WrathChaos/StompClientLib/issues/9)
 
 ## [1.2.4](https://github.com/WrathChaos/StompClientLib/tree/1.2.4) (2018-10-17)
+
 [Full Changelog](https://github.com/WrathChaos/StompClientLib/compare/1.2.3...1.2.4)
 
 **Closed issues:**
@@ -117,6 +182,7 @@
 - didCloseWithCode 1000, reason: nil [\#21](https://github.com/WrathChaos/StompClientLib/issues/21)
 
 ## [1.2.3](https://github.com/WrathChaos/StompClientLib/tree/1.2.3) (2018-10-17)
+
 [Full Changelog](https://github.com/WrathChaos/StompClientLib/compare/1.2.2...1.2.3)
 
 **Implemented enhancements:**
@@ -137,12 +203,15 @@
 - Unable to find a specification for 'StompClientLib' [\#8](https://github.com/WrathChaos/StompClientLib/issues/8)
 
 ## [1.2.2](https://github.com/WrathChaos/StompClientLib/tree/1.2.2) (2017-11-03)
+
 [Full Changelog](https://github.com/WrathChaos/StompClientLib/compare/1.2.1...1.2.2)
 
 ## [1.2.1](https://github.com/WrathChaos/StompClientLib/tree/1.2.1) (2017-10-31)
+
 [Full Changelog](https://github.com/WrathChaos/StompClientLib/compare/1.2.0...1.2.1)
 
 ## [1.2.0](https://github.com/WrathChaos/StompClientLib/tree/1.2.0) (2017-10-29)
+
 [Full Changelog](https://github.com/WrathChaos/StompClientLib/compare/1.1.7...1.2.0)
 
 **Closed issues:**
@@ -152,27 +221,35 @@
 - Error when calling delegate [\#1](https://github.com/WrathChaos/StompClientLib/issues/1)
 
 ## [1.1.7](https://github.com/WrathChaos/StompClientLib/tree/1.1.7) (2017-10-02)
+
 [Full Changelog](https://github.com/WrathChaos/StompClientLib/compare/1.1.6...1.1.7)
 
 ## [1.1.6](https://github.com/WrathChaos/StompClientLib/tree/1.1.6) (2017-08-08)
+
 [Full Changelog](https://github.com/WrathChaos/StompClientLib/compare/0.1.5...1.1.6)
 
 ## [0.1.5](https://github.com/WrathChaos/StompClientLib/tree/0.1.5) (2017-07-10)
+
 [Full Changelog](https://github.com/WrathChaos/StompClientLib/compare/0.1.4...0.1.5)
 
 ## [0.1.4](https://github.com/WrathChaos/StompClientLib/tree/0.1.4) (2017-07-10)
+
 [Full Changelog](https://github.com/WrathChaos/StompClientLib/compare/0.1.3...0.1.4)
 
 ## [0.1.3](https://github.com/WrathChaos/StompClientLib/tree/0.1.3) (2017-07-10)
+
 [Full Changelog](https://github.com/WrathChaos/StompClientLib/compare/0.1.2...0.1.3)
 
 ## [0.1.2](https://github.com/WrathChaos/StompClientLib/tree/0.1.2) (2017-07-08)
+
 [Full Changelog](https://github.com/WrathChaos/StompClientLib/compare/0.1.1...0.1.2)
 
 ## [0.1.1](https://github.com/WrathChaos/StompClientLib/tree/0.1.1) (2017-07-08)
+
 [Full Changelog](https://github.com/WrathChaos/StompClientLib/compare/0.1.0...0.1.1)
 
 ## [0.1.0](https://github.com/WrathChaos/StompClientLib/tree/0.1.0) (2017-07-08)
 
+[Full Changelog](https://github.com/WrathChaos/StompClientLib/compare/cbd49d3cad9a33ae96ff1708f7e0d3e975455325...0.1.0)
 
-\* *This Change Log was automatically generated by [github_changelog_generator](https://github.com/skywinder/Github-Changelog-Generator)*
+\* _This Changelog was automatically generated by [github_changelog_generator](https://github.com/github-changelog-generator/github-changelog-generator)_
