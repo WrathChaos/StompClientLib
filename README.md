@@ -44,6 +44,10 @@ StompClientLib is a stomp client in Swift. It uses Facebook's [ SocketRocket ](h
 
 This is original a fork from [AKStompClient](https://github.com/alibasta/AKStompClient) (This library is not working right now)
 
+## Supported Stomp Versions
+
+- Stomp version **1.1, 1.2** (Might be worked with 1.0)
+
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
