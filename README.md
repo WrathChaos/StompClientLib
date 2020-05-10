@@ -46,7 +46,10 @@ This is original a fork from [AKStompClient](https://github.com/alibasta/AKStomp
 
 ## Supported Stomp Versions
 
-- Stomp version **1.1, 1.2** (Might be worked with 1.0)
+Stomp version 
+- **1.1** 
+- **1.2** 
+- Might **not** be worked with 1.0 (Never tested)
 
 ## Example
 
