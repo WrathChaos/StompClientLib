@@ -80,9 +80,10 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
     private let queue: DispatchQueue
 
     /**
-     All callbacks are run on `queue`.  `queue` should be a serial queue (the default), or undefined behavior may occur.
+     All callbacks are run on `queue`.  `queue` should be a serial queue (the default mode), or undefined behavior may occur.
+     `queue` defaults to `DispatchQueue.main`.
      */
-    public init(queue: DispatchQueue) {
+    public init(queue: DispatchQueue = DispatchQueue.main) {
         self.queue = queue
     }
     
