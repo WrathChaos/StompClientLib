@@ -77,6 +77,14 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
     public var connection: Bool = false
     public var certificateCheckEnabled = true
     private var urlRequest: NSURLRequest?
+    private let queue: DispatchQueue
+
+    /**
+     All callbacks are run on `queue`.  `queue` should be a serial queue (the default), or undefined behavior may occur.
+     */
+    public init(queue: DispatchQueue) {
+        self.queue = queue
+    }
     
     public func sendJSONForDict(dict: AnyObject, toDestination destination: String) {
         do {
@@ -107,6 +115,7 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
                 self.socket = SRWebSocket(urlRequest: urlRequest! as URLRequest, protocols: [], allowsUntrustedSSLCertificates: true)
             }
             
+            socket!.setDelegateDispatchQueue(queue)
             socket!.delegate = self
             socket!.open()
         }
@@ -114,7 +123,7 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
     
     private func closeSocket(){
         if let delegate = delegate {
-            DispatchQueue.main.async(execute: {
+            queue.async(execute: {
                 delegate.stompClientDidDisconnect(client: self)
                 if self.socket != nil {
                     // Close the socket
@@ -200,7 +209,7 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
         print("didFailWithError: \(String(describing: error))")
         
         if let delegate = delegate {
-            DispatchQueue.main.async(execute: {
+            queue.async(execute: {
                 delegate.serverDidSendError(client: self, withErrorMessage: error.localizedDescription, detailedErrorMessage: error as? String)
             })
         }
@@ -209,7 +218,7 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
     public func webSocket(_ webSocket: SRWebSocket!, didCloseWithCode code: Int, reason: String!, wasClean: Bool) {
         print("didCloseWithCode \(code), reason: \(String(describing: reason))")
         if let delegate = delegate {
-            DispatchQueue.main.async(execute: {
+            queue.async(execute: {
                 delegate.stompClientDidDisconnect(client: self)
             })
         }
@@ -252,7 +261,7 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
                 socket?.send(frameString)
             } else {
                 if let delegate = delegate {
-                    DispatchQueue.main.async(execute: {
+                    queue.async(execute: {
                         delegate.stompClientDidDisconnect(client: self)
                     })
                 }
@@ -292,14 +301,14 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
             }
             
             if let delegate = delegate {
-                DispatchQueue.main.async(execute: {
+                queue.async(execute: {
                     delegate.stompClientDidConnect(client: self)
                 })
             }
         } else if command == StompCommands.responseFrameMessage {   // Message comes to this part
             // Response
             if let delegate = delegate {
-                DispatchQueue.main.async(execute: {
+                queue.async(execute: {
                     delegate.stompClient(client: self, didReceiveMessageWithJSONBody: self.dictForJSONString(jsonStr: body), akaStringBody: body, withHeader: headers, withDestination: self.destinationFromHeader(header: headers))
                 })
             }
@@ -307,7 +316,7 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
             // Receipt
             if let delegate = delegate {
                 if let receiptId = headers[StompCommands.responseHeaderReceiptId] {
-                    DispatchQueue.main.async(execute: {
+                    queue.async(execute: {
                         delegate.serverDidSendReceipt(client: self, withReceiptId: receiptId)
                     })
                 }
@@ -316,7 +325,7 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
             // Pong from the server
             socket?.send(StompCommands.commandPing)
             if let delegate = delegate {
-                DispatchQueue.main.async(execute: {
+                queue.async(execute: {
                     delegate.serverDidSendPing()
                 })
             }
@@ -324,7 +333,7 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
             // Error
             if let delegate = delegate {
                 if let msg = headers[StompCommands.responseHeaderErrorMessage] {
-                    DispatchQueue.main.async(execute: {
+                    queue.async(execute: {
                         delegate.serverDidSendError(client: self, withErrorMessage: msg, detailedErrorMessage: body)
                     })
                 }
@@ -488,7 +497,7 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
     
     // Autodisconnect with a given time
     public func autoDisconnect(time: Double){
-        DispatchQueue.main.asyncAfter(deadline: .now() + time) {
+        queue.asyncAfter(deadline: .now() + time) {
             // Disconnect the socket
             self.disconnect()
         }
