@@ -1,0 +1,3 @@
+${PODS_ROOT}/Target Support Files/Pods-StompClientLibExample-StompClientLibExampleUITests/Pods-StompClientLibExample-StompClientLibExampleUITests-frameworks.sh
+${BUILT_PRODUCTS_DIR}/SocketRocket/SocketRocket.framework
+${BUILT_PRODUCTS_DIR}/StompClientLib/StompClientLib.framework

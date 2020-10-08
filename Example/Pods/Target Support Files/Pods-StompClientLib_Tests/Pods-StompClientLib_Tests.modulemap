@@ -1,6 +1,0 @@
-framework module Pods_StompClientLib_Tests {
-  umbrella header "Pods-StompClientLib_Tests-umbrella.h"
-
-  export *
-  module * { export * }
-}
