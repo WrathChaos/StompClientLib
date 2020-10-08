@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D7A2EDF252F0A3400C25C02 /* StompClientLib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7A2EDE252F0A3400C25C02 /* StompClientLib.swift */; };
 		4DDC24BE252EFF0200E14704 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDC24BD252EFF0200E14704 /* AppDelegate.swift */; };
 		4DDC24C0252EFF0200E14704 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDC24BF252EFF0200E14704 /* SceneDelegate.swift */; };
 		4DDC24C2252EFF0200E14704 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDC24C1252EFF0200E14704 /* ViewController.swift */; };
@@ -15,7 +16,6 @@
 		4DDC24CA252EFF0400E14704 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DDC24C8252EFF0400E14704 /* LaunchScreen.storyboard */; };
 		4DDC24D5252EFF0400E14704 /* StompClientLibExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDC24D4252EFF0400E14704 /* StompClientLibExampleTests.swift */; };
 		4DDC24E0252EFF0400E14704 /* StompClientLibExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDC24DF252EFF0400E14704 /* StompClientLibExampleUITests.swift */; };
-		4DDC24F9252F016100E14704 /* StompClientLib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDC24F8252F016100E14704 /* StompClientLib.swift */; };
 		515F892DE0B4F1D6811AAA99 /* Pods_StompClientLibExample_StompClientLibExampleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04998091BF2B72FE0D232EBD /* Pods_StompClientLibExample_StompClientLibExampleUITests.framework */; };
 		C463B40B30140B34F80DE9CC /* Pods_StompClientLibExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A09E28D4F0D1C862DB14566E /* Pods_StompClientLibExample.framework */; };
 		F7D7E8F90F1E75AA063CE9D4 /* Pods_StompClientLibExampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5F10D61FC79B5256A559E91 /* Pods_StompClientLibExampleTests.framework */; };
@@ -43,6 +43,7 @@
 		0AA7DBE617D00B75746D8D98 /* Pods-StompClientLibExample-StompClientLibExampleUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StompClientLibExample-StompClientLibExampleUITests.release.xcconfig"; path = "Target Support Files/Pods-StompClientLibExample-StompClientLibExampleUITests/Pods-StompClientLibExample-StompClientLibExampleUITests.release.xcconfig"; sourceTree = "<group>"; };
 		2420D6AC0CC10C10A0D9CB8C /* Pods-StompClientLibExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StompClientLibExampleTests.debug.xcconfig"; path = "Target Support Files/Pods-StompClientLibExampleTests/Pods-StompClientLibExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4CB0E35D0539542EEC8D550E /* Pods-StompClientLibExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StompClientLibExample.release.xcconfig"; path = "Target Support Files/Pods-StompClientLibExample/Pods-StompClientLibExample.release.xcconfig"; sourceTree = "<group>"; };
+		4D7A2EDE252F0A3400C25C02 /* StompClientLib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StompClientLib.swift; path = ../StompClientLib/Classes/StompClientLib.swift; sourceTree = "<group>"; };
 		4DDC24BA252EFF0200E14704 /* StompClientLibExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StompClientLibExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DDC24BD252EFF0200E14704 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4DDC24BF252EFF0200E14704 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -57,7 +58,6 @@
 		4DDC24DB252EFF0400E14704 /* StompClientLibExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StompClientLibExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DDC24DF252EFF0400E14704 /* StompClientLibExampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StompClientLibExampleUITests.swift; sourceTree = "<group>"; };
 		4DDC24E1252EFF0500E14704 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4DDC24F8252F016100E14704 /* StompClientLib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StompClientLib.swift; path = ../Example/StompClientLib.swift; sourceTree = "<group>"; };
 		825EA812F0119AE718B25D70 /* Pods-StompClientLibExample-StompClientLibExampleUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StompClientLibExample-StompClientLibExampleUITests.debug.xcconfig"; path = "Target Support Files/Pods-StompClientLibExample-StompClientLibExampleUITests/Pods-StompClientLibExample-StompClientLibExampleUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		A09E28D4F0D1C862DB14566E /* Pods_StompClientLibExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StompClientLibExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5F10D61FC79B5256A559E91 /* Pods_StompClientLibExampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StompClientLibExampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -106,7 +106,7 @@
 		4DDC24B1252EFF0200E14704 = {
 			isa = PBXGroup;
 			children = (
-				4DDC24F8252F016100E14704 /* StompClientLib.swift */,
+				4D7A2EDE252F0A3400C25C02 /* StompClientLib.swift */,
 				4DDC24BC252EFF0200E14704 /* StompClientLibExample */,
 				4DDC24D3252EFF0400E14704 /* StompClientLibExampleTests */,
 				4DDC24DE252EFF0400E14704 /* StompClientLibExampleUITests */,
@@ -427,7 +427,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4DDC24F9252F016100E14704 /* StompClientLib.swift in Sources */,
+				4D7A2EDF252F0A3400C25C02 /* StompClientLib.swift in Sources */,
 				4DDC24C2252EFF0200E14704 /* ViewController.swift in Sources */,
 				4DDC24BE252EFF0200E14704 /* AppDelegate.swift in Sources */,
 				4DDC24C0252EFF0200E14704 /* SceneDelegate.swift in Sources */,
