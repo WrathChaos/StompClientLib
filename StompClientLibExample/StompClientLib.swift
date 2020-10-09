@@ -70,6 +70,7 @@ public protocol StompClientLibDelegate: class {
     func serverDidSendPing()
 }
 
+@objcMembers
 public class StompClientLib: NSObject, SRWebSocketDelegate {
     var socket: SRWebSocket?
     var sessionId: String?

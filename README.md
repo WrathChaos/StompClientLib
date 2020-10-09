@@ -1,7 +1,7 @@
 # StompClientLib
 
 <p align="center">
-<img width="200" height="200" src="https://github.com/WrathChaos/StompClientLib/blob/master/Screenshots/socket.png">
+<img width="200" height="200" src="Screenshots/socket.png">
 </p>
 
 <p align="center">
@@ -37,7 +37,10 @@ alt="Pod Version">
 alt="Issues">
 </a>
 </p>
-
+<p align="center">
+  <img alt="Swift 5+ StompClient Library"
+          src="Screenshots/StompClientLib-Example.gif" width="500px" />
+</p>
 ## Introduction
 
 StompClientLib is a stomp client in Swift. It uses Facebook's [ SocketRocket ](https://github.com/facebook/SocketRocket) as a websocket dependency. SocketRocket is written in Objective-C but StompClientLib's STOMP part is written in Swift and its usage is Swift. You can use this library in your Swift 5+, 4+ and 3+ projects.
