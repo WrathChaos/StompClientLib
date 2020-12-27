@@ -140,7 +140,7 @@ Your json message will be converted to JSON Body as AnyObject and you will recei
 
 ```swift
 func stompClientJSONBody(client: StompClientLib!, didReceiveMessageWithJSONBody jsonBody: String?, withHeader header: [String : String]?, withDestination destination: String) {
-  print("DESTIONATION : \(destination)")
+  print("DESTINATION : \(destination)")
   print("String JSON BODY : \(String(describing: jsonBody))")
 }
 ```
