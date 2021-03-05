@@ -485,12 +485,6 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
         reconnectTimer = nil
     }
     
-    public func stopReconnectAndDisconnect() {
-        reconnectTimer?.invalidate()
-        reconnectTimer = nil
-        self.disconnect()
-    }
-    
     private func checkConnectionHeader(connectionHeaders: [String: String] = [String: String]()) -> Bool{
         if (connectionHeaders.isEmpty){
             // No connection header
