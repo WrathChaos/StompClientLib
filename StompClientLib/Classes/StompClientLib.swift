@@ -66,10 +66,11 @@ public protocol StompClientLibDelegate: class {
     
     func stompClientDidDisconnect(client: StompClientLib!)
     func stompClientDidConnect(client: StompClientLib!)
+    func StompClientDidOpen(client: StompClientLib!, header: [String: Any]?)
     func serverDidSendReceipt(client: StompClientLib!, withReceiptId receiptId: String)
     func serverDidSendError(client: StompClientLib!, withErrorMessage description: String, detailedErrorMessage message: String?)
     func serverDidSendPing()
-    func websocketDidConnect(header: [String: Any]?)
+   
 }
 
 @objcMembers
@@ -203,7 +204,7 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
         if let json = CFHTTPMessageCopyAllHeaderFields(webSocket.receivedHTTPHeaders)?.takeUnretainedValue() as? [String:Any] {
             if let delegate = delegate {
                 DispatchQueue.main.async(execute: {
-                    delegate.websocketDidConnect(header: json)
+                    delegate.StompClientDidOpen(client: self, header: json)
                 })
             }
         }
