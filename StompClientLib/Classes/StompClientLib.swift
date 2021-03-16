@@ -201,12 +201,10 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
     public func webSocketDidOpen(_ webSocket: SRWebSocket!) {
         print("WebSocket is connected")
         
-        if let header = CFHTTPMessageCopyAllHeaderFields(webSocket.receivedHTTPHeaders)?.takeUnretainedValue() as? [String:Any] {
-            if let delegate = delegate {
+        if let header = CFHTTPMessageCopyAllHeaderFields(webSocket.receivedHTTPHeaders)?.takeUnretainedValue() as? [String:Any], delegate = delegate {
                 DispatchQueue.main.async(execute: {
                     delegate.StompClientDidOpen(client: self, withHeader: header)
                 })
-            }
         }
         
         connect()
