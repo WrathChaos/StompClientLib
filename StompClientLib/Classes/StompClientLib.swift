@@ -66,7 +66,7 @@ public protocol StompClientLibDelegate: class {
     
     func stompClientDidDisconnect(client: StompClientLib!)
     func stompClientDidConnect(client: StompClientLib!)
-    func StompClientDidOpen(client: StompClientLib!, withHeader: [String: Any]?)
+    func StompClientDidOpen(client: StompClientLib!, withHeader: [String: Any])
     func serverDidSendReceipt(client: StompClientLib!, withReceiptId receiptId: String)
     func serverDidSendError(client: StompClientLib!, withErrorMessage description: String, detailedErrorMessage message: String?)
     func serverDidSendPing()
