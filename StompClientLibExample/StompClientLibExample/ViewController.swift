@@ -81,7 +81,7 @@ class ViewController: UIViewController, StompClientLibDelegate {
         socketClient.openSocketWithURLRequest(request: NSURLRequest(url: url as URL) , delegate: self as StompClientLibDelegate)
     }
     
-    func stompClientDidConnect(client: StompClientLib!) {
+    func stompClientDidConnect(client: StompClientLib!, withHeader: [String : Any]?) {
         let topic = self.topic
         print("Socket is Connected : \(topic)")
         socketClient.subscribe(destination: topic)

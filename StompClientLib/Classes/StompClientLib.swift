@@ -65,7 +65,7 @@ public protocol StompClientLibDelegate: class {
     func stompClient(client: StompClientLib!, didReceiveMessageWithJSONBody jsonBody: AnyObject?, akaStringBody stringBody: String?, withHeader header:[String:String]?, withDestination destination: String)
     
     func stompClientDidDisconnect(client: StompClientLib!)
-    func stompClientDidConnect(client: StompClientLib!)
+    func stompClientDidConnect(client: StompClientLib!, withHeader: [String: Any]?)
     func serverDidSendReceipt(client: StompClientLib!, withReceiptId receiptId: String)
     func serverDidSendError(client: StompClientLib!, withErrorMessage description: String, detailedErrorMessage message: String?)
     func serverDidSendPing()
@@ -289,6 +289,11 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
         return nil
     }
     
+    private func receiveHTTPHeader() -> [String: Any]? {
+        guard let socket = self.socket, let header = CFHTTPMessageCopyAllHeaderFields(socket.receivedHTTPHeaders)?.takeUnretainedValue() as? [String:Any] else { return nil}
+        return header
+    }
+    
     private func receiveFrame(command: String, headers: [String: String], body: String?) {
         if command == StompCommands.responseFrameConnected {
             // Connected
@@ -298,7 +303,7 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
             
             if let delegate = delegate {
                 DispatchQueue.main.async(execute: {
-                    delegate.stompClientDidConnect(client: self)
+                    delegate.stompClientDidConnect(client: self, withHeader: self.receiveHTTPHeader())
                 })
             }
         } else if command == StompCommands.responseFrameMessage {   // Message comes to this part
