@@ -198,9 +198,9 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
     
     public func webSocketDidOpen(_ webSocket: SRWebSocket!) {
         print("WebSocket is connected")
-        if let delegate = delegate, let header = CFHTTPMessageCopyAllHeaderFields(webSocket.receivedHTTPHeaders)?.takeUnretainedValue() as? [String:Any] {
+        if let delegate = delegate {
             DispatchQueue.main.async(execute: {
-                delegate.stompClientDidOpen(client: self, withHeader: header)
+                delegate.stompClientDidOpen(client: self, withHeader: self.websocketReceiveHTTPHeader())
             })
         }
         connect()
@@ -293,6 +293,12 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
         }
         return nil
     }
+    
+    private func websocketReceiveHTTPHeader() -> [String: Any]? {
+        guard let socket = socket, let header = CFHTTPMessageCopyAllHeaderFields(socket.receivedHTTPHeaders)?.takeUnretainedValue() as? [String:Any] else { return nil }
+    return header
+    }
+    
     
     private func receiveFrame(command: String, headers: [String: String], body: String?) {
         if command == StompCommands.responseFrameConnected {
