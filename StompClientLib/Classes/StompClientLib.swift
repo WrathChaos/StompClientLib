@@ -63,7 +63,7 @@ public enum StompAckMode {
 @objc
 public protocol StompClientLibDelegate: class {
     func stompClient(client: StompClientLib!, didReceiveMessageWithJSONBody jsonBody: AnyObject?, akaStringBody stringBody: String?, withHeader header:[String:String]?, withDestination destination: String)
-    
+    func stompClientDidOpen(client: StompClientLib!, withHeader header:[String:Any]?)
     func stompClientDidDisconnect(client: StompClientLib!)
     func stompClientDidConnect(client: StompClientLib!)
     func serverDidSendReceipt(client: StompClientLib!, withReceiptId receiptId: String)
@@ -198,6 +198,11 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
     
     public func webSocketDidOpen(_ webSocket: SRWebSocket!) {
         print("WebSocket is connected")
+        if let delegate = delegate, let header = CFHTTPMessageCopyAllHeaderFields(webSocket.receivedHTTPHeaders)?.takeUnretainedValue() as? [String:Any] {
+            DispatchQueue.main.async(execute: {
+                delegate.stompClientDidOpen(client: self, withHeader: header)
+            })
+        }
         connect()
     }
     
