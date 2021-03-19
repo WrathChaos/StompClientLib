@@ -295,8 +295,11 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
     }
     
     private func websocketReceiveHTTPHeader() -> [String: Any]? {
-        guard let socket = socket, let header = CFHTTPMessageCopyAllHeaderFields(socket.receivedHTTPHeaders)?.takeUnretainedValue() as? [String:Any] else { return nil }
-    return header
+        guard let socket = socket,let header = CFHTTPMessageCopyAllHeaderFields(socket.receivedHTTPHeaders)?.takeUnretainedValue() as? [String:Any] else {
+                return nil
+            }
+        
+        return header
     }
     
     
