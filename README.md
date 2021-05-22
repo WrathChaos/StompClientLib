@@ -239,9 +239,10 @@ socket.write(string: connectFrame)
 
 - [x] ~~Complete a working Example~~
 - [x] ~~Add Carthage installation option~~
-- [ ] Add Swift Package Manager installation option
+- [x] ~~Add Swift Package Manager installation option~~
 - [x] ~~XCode 9 compatibility~~
 - [x] ~~Swift 4 compatibility and tests~~
+- [ ] [Apple's New Socket for iOS 13](https://developer.apple.com/documentation/network/nwprotocolwebsocket) Implementation from stratch
 
 # Changelog
 
