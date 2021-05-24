@@ -54,15 +54,15 @@ struct StompCommands {
 }
 
 public enum StompAckMode {
-    case AutoMode
-    case ClientMode
-    case ClientIndividualMode
+    case autoMode
+    case clientMode
+    case clientIndividualMode
 }
 
 // Fundamental Protocols
 @objc
 public protocol StompClientLibDelegate: AnyObject {
-    func stompClient(client: StompClientLib!, didReceiveMessageWithJSONBody jsonBody: AnyObject?, akaStringBody stringBody: String?, withHeader header:[String:String]?, withDestination destination: String)
+    func stompClient(client: StompClientLib!, didReceiveMessageWithJSONBody jsonBody: AnyObject?, akaStringBody stringBody: String?, withHeader header: [String: String]?, withDestination destination: String)
     
     func stompClientDidDisconnect(client: StompClientLib!)
     func stompClientDidConnect(client: StompClientLib!)
@@ -81,17 +81,16 @@ public class StompClientLib: NSObject, URLSessionWebSocketDelegate {
     public var certificateCheckEnabled = true
     private var urlRequest: NSURLRequest?
     
-    private var reconnectTimer : Timer?
+    private var reconnectTimer: Timer?
     
     public func sendJSONForDict(dict: AnyObject, toDestination destination: String) {
         do {
             let theJSONData = try JSONSerialization.data(withJSONObject: dict, options: JSONSerialization.WritingOptions())
             let theJSONText = String(data: theJSONData, encoding: String.Encoding.utf8)
-            //print(theJSONText!)
             let header = [StompCommands.commandHeaderContentType:"application/json;charset=UTF-8"]
             sendMessage(message: theJSONText!, toDestination: destination, withHeaders: header, withReceipt: nil)
         } catch {
-            print("error serializing JSON: \(error)")
+            debugPrint("error serializing JSON: \(error)")
         }
     }
     
@@ -110,10 +109,11 @@ public class StompClientLib: NSObject, URLSessionWebSocketDelegate {
             socket = urlSession.webSocketTask(with: urlRequest! as URLRequest)
             socket?.resume()
             receiveMessage()
+            sendPing()
         }
     }
     
-    private func closeSocket(){
+    private func closeSocket() {
         if let delegate = delegate {
             DispatchQueue.main.async(execute: {
                 delegate.stompClientDidDisconnect(client: self)
@@ -147,6 +147,7 @@ public class StompClientLib: NSObject, URLSessionWebSocketDelegate {
     private func receiveMessage() {
         
         func processString(string: String) {
+            debugPrint("received response: \(string)")
             var contents = string.components(separatedBy: "\n")
             if contents.first == "" {
                 contents.removeFirst()
@@ -225,6 +226,19 @@ public class StompClientLib: NSObject, URLSessionWebSocketDelegate {
         })
     }
     
+    /// ping
+    private func sendPing() {
+        socket?.sendPing { (error) in
+            if let error = error {
+                debugPrint("Sending PING failed: \(error)")
+            }
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+                self.sendPing()
+            }
+        }
+    }
+    
     private func sendFrame(command: String?, header: [String: String]?, body: AnyObject?) {
         if socket?.state == .running {
             var frameString = ""
@@ -244,8 +258,6 @@ public class StompClientLib: NSObject, URLSessionWebSocketDelegate {
             if let body = body as? String {
                 frameString += "\n"
                 frameString += body
-            } else if let _ = body as? NSData {
-                
             }
             
             if body == nil {
@@ -269,11 +281,9 @@ public class StompClientLib: NSObject, URLSessionWebSocketDelegate {
     }
     
     private func destinationFromHeader(header: [String: String]) -> String {
-        for (key, _) in header {
-            if key == "destination" {
-                let destination = header[key]!
-                return destination
-            }
+        for (key, _) in header where key == "destination" {
+            let destination = header[key]!
+            return destination
         }
         return ""
     }
@@ -293,6 +303,7 @@ public class StompClientLib: NSObject, URLSessionWebSocketDelegate {
     }
     
     private func receiveFrame(command: String, headers: [String: String], body: String?) {
+        
         if command == StompCommands.responseFrameConnected {
             // Connected
             if let sessId = headers[StompCommands.responseHeaderSession] {
@@ -322,9 +333,6 @@ public class StompClientLib: NSObject, URLSessionWebSocketDelegate {
             }
         } else if command.count == 0 {
             // Pong from the server
-            socket?.sendPing(pongReceiveHandler: { error in
-                debugPrint("didReceivePong")
-            })
             if let delegate = delegate {
                 DispatchQueue.main.async(execute: {
                     delegate.serverDidSendPing()
@@ -369,7 +377,7 @@ public class StompClientLib: NSObject, URLSessionWebSocketDelegate {
     /*
      Main Connection Check Method
      */
-    public func isConnected() -> Bool{
+    public func isConnected() -> Bool {
         return connection
     }
     
@@ -378,21 +386,18 @@ public class StompClientLib: NSObject, URLSessionWebSocketDelegate {
      */
     public func subscribe(destination: String) {
         connection = true
-        subscribeToDestination(destination: destination, ackMode: .AutoMode)
+        subscribeToDestination(destination: destination, ackMode: .autoMode)
     }
     
     public func subscribeToDestination(destination: String, ackMode: StompAckMode) {
         var ack = ""
         switch ackMode {
-        case StompAckMode.ClientMode:
+        case StompAckMode.clientMode:
             ack = StompCommands.ackClient
-            break
-        case StompAckMode.ClientIndividualMode:
+        case StompAckMode.clientIndividualMode:
             ack = StompCommands.ackClientIndividual
-            break
         default:
             ack = StompCommands.ackAuto
-            break
         }
         var headers = [StompCommands.commandHeaderDestination: destination, StompCommands.commandHeaderAck: ack, StompCommands.commandHeaderDestinationId: ""]
         if destination != "" {
@@ -462,28 +467,26 @@ public class StompClientLib: NSObject, URLSessionWebSocketDelegate {
     
     // Reconnect after one sec or arg, if reconnect is available
     // TODO: MAKE A VARIABLE TO CHECK RECONNECT OPTION IS AVAILABLE OR NOT
-    public func reconnect(request: NSURLRequest, delegate: StompClientLibDelegate, connectionHeaders: [String: String] = [String: String](), time: Double = 1.0, exponentialBackoff: Bool = true){
+    public func reconnect(request: NSURLRequest, delegate: StompClientLibDelegate, connectionHeaders: [String: String] = [String: String](), time: Double = 1.0, exponentialBackoff: Bool = true) {
         if #available(iOS 10.0, *) {
             reconnectTimer = Timer.scheduledTimer(withTimeInterval: time, repeats: true, block: { _ in
-                self.reconnectLogic(request: request, delegate: delegate
-                    , connectionHeaders: connectionHeaders)
+                self.reconnectLogic(request: request, delegate: delegate, connectionHeaders: connectionHeaders)
             })
         } else {
             // Fallback on earlier versions
             // Swift >=3 selector syntax
             //            Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.reconnectFallback), userInfo: nil, repeats: true)
-            print("Reconnect Feature has no support for below iOS 10, it is going to be available soon!")
+            debugPrint("Reconnect Feature has no support for below iOS 10, it is going to be available soon!")
         }
     }
     //    @objc func reconnectFallback() {
     //        reconnectLogic(request: request, delegate: delegate, connectionHeaders: connectionHeaders)
     //    }
     
-    private func reconnectLogic(request: NSURLRequest, delegate: StompClientLibDelegate, connectionHeaders: [String: String] = [String: String]()){
+    private func reconnectLogic(request: NSURLRequest, delegate: StompClientLibDelegate, connectionHeaders: [String: String] = [String: String]()) {
         // Check if connection is alive or dead
-        if (!self.isConnected()){
-            self.checkConnectionHeader(connectionHeaders: connectionHeaders) ? self.openSocketWithURLRequest(request: request, delegate: delegate, connectionHeaders: connectionHeaders) : self.openSocketWithURLRequest(request: request, delegate: delegate)
-        }
+        guard !self.isConnected() else { return }
+        checkConnectionHeader(connectionHeaders: connectionHeaders) ? self.openSocketWithURLRequest(request: request, delegate: delegate, connectionHeaders: connectionHeaders) : self.openSocketWithURLRequest(request: request, delegate: delegate)
     }
     
     public func stopReconnect() {
@@ -491,18 +494,13 @@ public class StompClientLib: NSObject, URLSessionWebSocketDelegate {
         reconnectTimer = nil
     }
     
-    private func checkConnectionHeader(connectionHeaders: [String: String] = [String: String]()) -> Bool{
-        if (connectionHeaders.isEmpty){
-            // No connection header
-            return false
-        } else {
-            // There is a connection header
-            return true
-        }
+    private func checkConnectionHeader(connectionHeaders: [String: String] = [String: String]()) -> Bool {
+        guard connectionHeaders.isEmpty else { return true }
+        return false
     }
     
     // Autodisconnect with a given time
-    public func autoDisconnect(time: Double){
+    public func autoDisconnect(time: Double) {
         DispatchQueue.main.asyncAfter(deadline: .now() + time) {
             // Disconnect the socket
             self.disconnect()
