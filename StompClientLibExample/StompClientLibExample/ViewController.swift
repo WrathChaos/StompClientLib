@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import StompClientLib
 
 class ViewController: UIViewController, StompClientLibDelegate {
     

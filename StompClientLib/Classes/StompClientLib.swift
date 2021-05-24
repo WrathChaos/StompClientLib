@@ -8,7 +8,7 @@
 //
 
 import UIKit
-import SocketRocket
+import Foundation
 
 struct StompCommands {
     // Basic Commands
@@ -61,7 +61,7 @@ public enum StompAckMode {
 
 // Fundamental Protocols
 @objc
-public protocol StompClientLibDelegate: class {
+public protocol StompClientLibDelegate: AnyObject {
     func stompClient(client: StompClientLib!, didReceiveMessageWithJSONBody jsonBody: AnyObject?, akaStringBody stringBody: String?, withHeader header:[String:String]?, withDestination destination: String)
     
     func stompClientDidDisconnect(client: StompClientLib!)
@@ -72,8 +72,8 @@ public protocol StompClientLibDelegate: class {
 }
 
 @objcMembers
-public class StompClientLib: NSObject, SRWebSocketDelegate {
-    var socket: SRWebSocket?
+public class StompClientLib: NSObject, URLSessionWebSocketDelegate {
+    var socket: URLSessionWebSocketTask?
     var sessionId: String?
     weak var delegate: StompClientLibDelegate?
     var connectionHeaders: [String: String]?
@@ -105,15 +105,11 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
     }
     
     private func openSocket() {
-        if socket == nil || socket?.readyState == .CLOSED {
-            if certificateCheckEnabled == true {
-                self.socket = SRWebSocket(urlRequest: urlRequest! as URLRequest)
-            } else {
-                self.socket = SRWebSocket(urlRequest: urlRequest! as URLRequest, protocols: [], allowsUntrustedSSLCertificates: true)
-            }
-            
-            socket!.delegate = self
-            socket!.open()
+        if socket == nil || socket?.state != .running {
+            let urlSession = URLSession(configuration: .default, delegate: self, delegateQueue: nil)
+            socket = urlSession.webSocketTask(with: urlRequest! as URLRequest)
+            socket?.resume()
+            receiveMessage()
         }
     }
     
@@ -123,8 +119,7 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
                 delegate.stompClientDidDisconnect(client: self)
                 if self.socket != nil {
                     // Close the socket
-                    self.socket!.close()
-                    self.socket!.delegate = nil
+                    self.socket?.cancel(with: .goingAway, reason: nil)
                     self.socket = nil
                 }
             })
@@ -135,7 +130,7 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
      Main Connection Method to open socket
      */
     private func connect() {
-        if socket?.readyState == .OPEN {
+        if socket?.state == .running {
             // Support for Spring Boot 2.1.x
             if connectionHeaders == nil {
                 connectionHeaders = [StompCommands.commandHeaderAcceptVersion:"1.1,1.2"]
@@ -149,7 +144,7 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
         }
     }
     
-    public func webSocket(_ webSocket: SRWebSocket!, didReceiveMessage message: Any!) {
+    private func receiveMessage() {
         
         func processString(string: String) {
             var contents = string.components(separatedBy: "\n")
@@ -187,45 +182,51 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
             }
         }
         
-        if let strData = message as? NSData {
-            if let msg = String(data: strData as Data, encoding: String.Encoding.utf8) {
-                processString(string: msg)
+        socket?.receive { result in
+            switch result {
+            case .failure(let error):
+                debugPrint("Error in receiving message: \(error)")
+            case .success(let message):
+                switch message {
+                case .string(let text):
+                    processString(string: text)
+                case .data(let data):
+                    if let msg = String(data: data as Data, encoding: String.Encoding.utf8) {
+                        processString(string: msg)
+                    }
+                @unknown default:
+                    debugPrint("Unknown response from the server")
+                }
+                self.receiveMessage()
             }
-        } else if let str = message as? String {
-            processString(string: str)
         }
     }
     
-    public func webSocketDidOpen(_ webSocket: SRWebSocket!) {
-        print("WebSocket is connected")
+    /// connection disconnected
+    public func urlSession(_ session: URLSession, webSocketTask: URLSessionWebSocketTask, didCloseWith closeCode: URLSessionWebSocketTask.CloseCode, reason: Data?) {
+        debugPrint("didCloseWithCode \(closeCode), reason: \(String(describing: reason))")
+        guard let delegate = delegate else { return }
+        DispatchQueue.main.async(execute: {
+            delegate.stompClientDidDisconnect(client: self)
+        })
+        
+    }
+    /// connection established
+    public func urlSession(_ session: URLSession, webSocketTask: URLSessionWebSocketTask, didOpenWithProtocol protocol: String?) {
+        debugPrint("WebSocket is connected")
         connect()
     }
-    
-    public func webSocket(_ webSocket: SRWebSocket!, didFailWithError error: Error!) {
-        print("didFailWithError: \(String(describing: error))")
-        
-        if let delegate = delegate {
-            DispatchQueue.main.async(execute: {
-                delegate.serverDidSendError(client: self, withErrorMessage: error.localizedDescription, detailedErrorMessage: error as? String)
-            })
-        }
-    }
-    
-    public func webSocket(_ webSocket: SRWebSocket!, didCloseWithCode code: Int, reason: String!, wasClean: Bool) {
-        print("didCloseWithCode \(code), reason: \(String(describing: reason))")
-        if let delegate = delegate {
-            DispatchQueue.main.async(execute: {
-                delegate.stompClientDidDisconnect(client: self)
-            })
-        }
-    }
-    
-    public func webSocket(_ webSocket: SRWebSocket!, didReceivePong pongPayload: Data!) {
-        print("didReceivePong")
+    /// did receive an error
+    public func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
+        debugPrint("didFailWithError: \(String(describing: error))")
+        guard let delegate = delegate, let error = error else { return }
+        DispatchQueue.main.async(execute: {
+            delegate.serverDidSendError(client: self, withErrorMessage: error.localizedDescription, detailedErrorMessage: error.localizedDescription)
+        })
     }
     
     private func sendFrame(command: String?, header: [String: String]?, body: AnyObject?) {
-        if socket?.readyState == .OPEN {
+        if socket?.state == .running {
             var frameString = ""
             if command != nil {
                 frameString = command! + "\n"
@@ -253,8 +254,10 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
             
             frameString += StompCommands.controlChar
             
-            if socket?.readyState == .OPEN {
-                socket?.send(frameString)
+            if socket?.state == .running {
+                socket?.send(.string(frameString), completionHandler: { error in
+                    debugPrint("message send with error: \(error.debugDescription)")
+                })
             } else {
                 if let delegate = delegate {
                     DispatchQueue.main.async(execute: {
@@ -283,7 +286,7 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
                     return json as AnyObject
                 }
             } catch {
-                print("error serializing JSON: \(error)")
+                debugPrint("error serializing JSON: \(error)")
             }
         }
         return nil
@@ -319,7 +322,9 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
             }
         } else if command.count == 0 {
             // Pong from the server
-            socket?.send(StompCommands.commandPing)
+            socket?.sendPing(pongReceiveHandler: { error in
+                debugPrint("didReceivePong")
+            })
             if let delegate = delegate {
                 DispatchQueue.main.async(execute: {
                     delegate.serverDidSendPing()

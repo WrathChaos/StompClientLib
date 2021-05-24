@@ -1,6 +1,0 @@
-framework module StompClientLib {
-  umbrella header "StompClientLib-umbrella.h"
-
-  export *
-  module * { export * }
-}
