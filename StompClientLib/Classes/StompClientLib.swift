@@ -77,7 +77,6 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
     var sessionId: String?
     weak var delegate: StompClientLibDelegate?
     var connectionHeaders: [String: String]?
-    public var connection: Bool = false
     public var certificateCheckEnabled = true
     private var urlRequest: NSURLRequest?
     
@@ -101,7 +100,6 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
         self.urlRequest = request
         // Opening the socket
         openSocket()
-        self.connection = true
     }
     
     private func openSocket() {
@@ -365,14 +363,13 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
      Main Connection Check Method
      */
     public func isConnected() -> Bool{
-        return connection
+        return socket?.readyState == .OPEN
     }
     
     /*
      Main Subscribe Method with topic name
      */
     public func subscribe(destination: String) {
-        connection = true
         subscribeToDestination(destination: destination, ackMode: .AutoMode)
     }
     
@@ -446,7 +443,6 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
      Main Disconnection Method to close the socket
      */
     public func disconnect() {
-        connection = false
         var headerToSend = [String: String]()
         headerToSend[StompCommands.commandDisconnect] = String(Int(NSDate().timeIntervalSince1970))
         sendFrame(command: StompCommands.commandDisconnect, header: headerToSend, body: nil)
