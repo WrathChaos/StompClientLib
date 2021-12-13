@@ -406,7 +406,6 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
      Main Unsubscribe Method with topic name
      */
     public func unsubscribe(destination: String) {
-        connection = false
         var headerToSend = [String: String]()
         headerToSend[StompCommands.commandHeaderDestinationId] = destination
         sendFrame(command: StompCommands.commandUnsubscribe, header: headerToSend, body: nil)
