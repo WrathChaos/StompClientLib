@@ -117,16 +117,15 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
     
     private func closeSocket(){
         if let delegate = delegate {
-            DispatchQueue.main.async(execute: {
-                delegate.stompClientDidDisconnect(client: self)
-                if self.socket != nil {
-                    // Close the socket
-                    self.socket!.close()
-                    self.socket!.delegate = nil
-                    self.socket = nil
-                }
-            })
+            delegate.stompClientDidDisconnect(client: self)
         }
+        guard socket != nil else { return }
+        DispatchQueue.main.async(execute: {
+            // Close the socket
+            self.socket!.close()
+            self.socket!.delegate = nil
+            self.socket = nil
+        })
     }
     
     /*
@@ -453,10 +452,11 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
     // Reconnect after one sec or arg, if reconnect is available
     // TODO: MAKE A VARIABLE TO CHECK RECONNECT OPTION IS AVAILABLE OR NOT
     public func reconnect(request: NSURLRequest, delegate: StompClientLibDelegate, connectionHeaders: [String: String] = [String: String](), time: Double = 1.0, exponentialBackoff: Bool = true){
+        weak var delegate = delegate
         if #available(iOS 10.0, *) {
             reconnectTimer = Timer.scheduledTimer(withTimeInterval: time, repeats: true, block: { _ in
-                self.reconnectLogic(request: request, delegate: delegate
-                    , connectionHeaders: connectionHeaders)
+                guard let delegate = delegate else { return }
+                self.reconnectLogic(request: request, delegate: delegate, connectionHeaders: connectionHeaders)
             })
         } else {
             // Fallback on earlier versions
