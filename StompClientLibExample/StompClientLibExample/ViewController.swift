@@ -96,13 +96,13 @@ class ViewController: UIViewController, StompClientLibDelegate {
     }
     
     func stompClient(client: StompClientLib!, didReceiveMessageWithJSONBody jsonBody: AnyObject?, akaStringBody stringBody: String?, withHeader header: [String : String]?, withDestination destination: String) {
-        print("DESTIONATION : \(destination)")
+        print("DESTINATION : \(destination)")
         print("JSON BODY : \(String(describing: jsonBody))")
         print("STRING BODY : \(stringBody ?? "nil")")
     }
     
     func stompClientJSONBody(client: StompClientLib!, didReceiveMessageWithJSONBody jsonBody: String?, withHeader header: [String : String]?, withDestination destination: String) {
-        print("DESTIONATION : \(destination)")
+        print("DESTINATION : \(destination)")
         print("String JSON BODY : \(String(describing: jsonBody))")
     }
     
