@@ -212,7 +212,7 @@ socketClient?.unsubscribe(destination: subsId)
 
 ## Auto Reconnect with a given time
 
-You can use this feature if you need to auto reconnect with a spesific time or it will just try to reconnect every second.
+You can use this feature if you need to auto reconnect with a specific time or it will just try to reconnect every second.
 
 ```swift
 // Reconnect after 4 sec
