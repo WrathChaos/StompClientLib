@@ -177,7 +177,7 @@ func serverDidSendPing() {
 ## How to subscribe and unsubscribe
 
 There are functions for subscribing and unsubscribing.
-Note : You should handle your subscribe and unsubscibe methods !
+Note : You should handle your subscribe and unsubscribe methods !
 Suggestion : Subscribe to your topic in "stompClientDidConnect" function and unsubcribe to your topic in stompClientWillDisconnect method.
 
 ## Subscribe
@@ -212,7 +212,7 @@ socketClient?.unsubscribe(destination: subsId)
 
 ## Auto Reconnect with a given time
 
-You can use this feature if you need to auto reconnect with a spesific time or it will just try to reconnect every second.
+You can use this feature if you need to auto reconnect with a specific time or it will just try to reconnect every second.
 
 ```swift
 // Reconnect after 4 sec
