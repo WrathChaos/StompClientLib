@@ -120,6 +120,7 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
     private func closeSocket(){
         if let delegate = delegate {
             DispatchQueue.main.async(execute: {
+                self.connection = false
                 delegate.stompClientDidDisconnect(client: self)
                 if self.socket != nil {
                     // Close the socket
@@ -206,6 +207,7 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
         
         if let delegate = delegate {
             DispatchQueue.main.async(execute: {
+                self.connection = false
                 delegate.serverDidSendError(client: self, withErrorMessage: error.localizedDescription, detailedErrorMessage: error as? String)
             })
         }
@@ -215,6 +217,7 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
         print("didCloseWithCode \(code), reason: \(String(describing: reason))")
         if let delegate = delegate {
             DispatchQueue.main.async(execute: {
+                self.connection = false
                 delegate.stompClientDidDisconnect(client: self)
             })
         }
@@ -258,6 +261,7 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
             } else {
                 if let delegate = delegate {
                     DispatchQueue.main.async(execute: {
+                        self.connection = false
                         delegate.stompClientDidDisconnect(client: self)
                     })
                 }
@@ -330,6 +334,7 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
             if let delegate = delegate {
                 if let msg = headers[StompCommands.responseHeaderErrorMessage] {
                     DispatchQueue.main.async(execute: {
+                        self.connection = false
                         delegate.serverDidSendError(client: self, withErrorMessage: msg, detailedErrorMessage: body)
                     })
                 }
